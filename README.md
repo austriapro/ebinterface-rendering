@@ -9,3 +9,5 @@ Using [ebInterface Web](https://github.com/austriapro/ebinterface-web) a user ma
 ##Code style
 
 For this project the Google code style is used. Please [download the code style file](https://code.google.com/p/google-styleguide/source/browse/trunk/intellij-java-google-style.xml) and set it in your IDE, before you commit to the repository. 
+
+:green_heart: Pull requests are greatly appreciated and welcomed.
