@@ -48,7 +48,7 @@ public class ZugferdPostprocessor {
   public byte[] embedXMLtoPDF(byte[] pdf, byte[] xml) throws Exception {
     PDDocument pdfBoxDocument = PDDocument.load(new ByteArrayInputStream(pdf));
     pdfBoxDocument.getDocumentInformation()
-        .setProducer("ecosio intercom GmbH, https://ecosio.com");
+        .setProducer("austriapro/ebInterface-ZUGFeRD");
     ZugferdMetaData zMetadata = getZugferdMetaData(xml);
     PDDocumentCatalog catalog = makeA3compliant(pdfBoxDocument, zMetadata);
     attachFile(pdfBoxDocument, zMetadata, xml);
