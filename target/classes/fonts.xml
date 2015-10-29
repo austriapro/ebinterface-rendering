@@ -1,0 +1,10 @@
+<fontFamilies>
+	<fontFamily name="Open Sans">
+		<normal>fonts/Open_Sans/OpenSans-Regular.ttf</normal>
+		<bold>fonts/Open_Sans/OpenSans-Bold.ttf</bold>
+		<italic>fonts/Open_Sans/OpenSans-Italic.ttf</italic>
+		<boldItalic>fonts/Open_Sans/OpenSans-BoldItalic.ttf</boldItalic>
+		<pdfEncoding>Identity-H</pdfEncoding>
+		<pdfEmbedded>true</pdfEmbedded>
+	</fontFamily>
+</fontFamilies>
