@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.1.1.final using JasperReports Library version 6.1.1  -->
-<!-- 2015-10-30T17:14:03 -->
+<!-- Created with Jaspersoft Studio version 6.0.4.final using JasperReports Library version 6.0.4  -->
+<!-- 2015-11-04T14:14:11 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ZUGeRD Sample" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isSummaryWithPageHeaderAndFooter="true" uuid="a72dec89-32b1-4281-ac4c-2ca66bdbfe45">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<style name="Default" isDefault="true" forecolor="#000000" backcolor="#FFFFFF" fontName="Open Sans" fontSize="10" pdfFontName="Open Sans" isPdfEmbedded="true"/>
@@ -378,56 +378,56 @@
 				<textFieldExpression><![CDATA[$F{document.comment}]]></textFieldExpression>
 			</textField>
 			<textField pattern=" #,##0.00" isBlankWhenNull="true">
-				<reportElement style="Default" x="467" y="38" width="71" height="14" uuid="28ea6821-86e3-4c56-8eff-cc8a2694c336"/>
+				<reportElement style="Default" x="483" y="38" width="71" height="14" uuid="28ea6821-86e3-4c56-8eff-cc8a2694c336"/>
 				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA[$F{document.taxAmount}]]></textFieldExpression>
 			</textField>
 			<textField pattern=" #,##0.00" isBlankWhenNull="true">
-				<reportElement style="DefaultBold" x="430" y="63" width="108" height="14" uuid="3a982492-613c-4d51-9c83-72bb01a9c73a"/>
+				<reportElement style="DefaultBold" x="446" y="63" width="108" height="14" uuid="3a982492-613c-4d51-9c83-72bb01a9c73a"/>
 				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA[$F{document.totalGrossAmount}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="Default" x="306" y="10" width="27" height="14" uuid="d245394c-550c-4848-9b19-cebeeebaaf62"/>
+				<reportElement style="Default" x="322" y="10" width="27" height="14" uuid="d245394c-550c-4848-9b19-cebeeebaaf62"/>
 				<text><![CDATA[EUR]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="DefaultBold" x="199" y="63" width="100" height="14" uuid="fe0a62ba-6253-4f83-98f6-b0c6fb531fb8"/>
+				<reportElement style="DefaultBold" x="215" y="63" width="100" height="14" uuid="fe0a62ba-6253-4f83-98f6-b0c6fb531fb8"/>
 				<text><![CDATA[Endbetrag]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="DefaultBold" x="306" y="63" width="27" height="14" uuid="8fcffcfc-ea72-4b8d-8da1-b7f9992aa8ce"/>
+				<reportElement style="DefaultBold" x="322" y="63" width="27" height="14" uuid="8fcffcfc-ea72-4b8d-8da1-b7f9992aa8ce"/>
 				<text><![CDATA[EUR]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Default" x="199" y="38" width="100" height="14" uuid="764e7797-e99f-4f55-bac2-382950e7cf3f"/>
+				<reportElement style="Default" x="215" y="38" width="100" height="14" uuid="764e7797-e99f-4f55-bac2-382950e7cf3f"/>
 				<text><![CDATA[Umsatzsteuer]]></text>
 			</staticText>
 			<textField pattern=" #,##0.00" isBlankWhenNull="true">
-				<reportElement style="Default" x="396" y="38" width="69" height="14" uuid="c1297331-5ce4-4390-929d-c7f8524da96c"/>
+				<reportElement style="Default" x="412" y="38" width="69" height="14" uuid="c1297331-5ce4-4390-929d-c7f8524da96c"/>
 				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA[$F{document.totalAmount}!=null?$F{document.totalAmount}:$F{document.totalGrossAmount}]]></textFieldExpression>
 			</textField>
 			<textField pattern=" #,##0.00" isBlankWhenNull="true">
-				<reportElement style="Default" x="467" y="24" width="71" height="14" uuid="2f01d0da-b313-4367-930e-1ac00d4d2276"/>
+				<reportElement style="Default" x="483" y="24" width="71" height="14" uuid="2f01d0da-b313-4367-930e-1ac00d4d2276"/>
 				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA[$F{document.totalAmount}!=null?$F{document.totalAmount}:$F{document.totalGrossAmount}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="Default" x="199" y="24" width="100" height="14" uuid="8f3f536b-6599-44f0-8809-cfc209ca37d0"/>
+				<reportElement style="Default" x="215" y="24" width="100" height="14" uuid="8f3f536b-6599-44f0-8809-cfc209ca37d0"/>
 				<text><![CDATA[Netto Betrag]]></text>
 			</staticText>
 			<textField pattern=" #,##0.00" isBlankWhenNull="true">
-				<reportElement style="Default" x="467" y="10" width="71" height="14" uuid="3a55dde5-9f1e-4236-8091-73d1c6cff64b"/>
+				<reportElement style="Default" x="483" y="10" width="71" height="14" uuid="3a55dde5-9f1e-4236-8091-73d1c6cff64b"/>
 				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA[$F{document.totalAmount}!=null?$F{document.totalAmount}:$F{document.totalGrossAmount}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="Default" x="199" y="10" width="100" height="14" uuid="c1e46b96-8cd7-457b-be9d-348b77247849"/>
+				<reportElement style="Default" x="215" y="10" width="100" height="14" uuid="c1e46b96-8cd7-457b-be9d-348b77247849"/>
 				<text><![CDATA[Summe Positionen]]></text>
 			</staticText>
 			<textField pattern=" #0.000%" isBlankWhenNull="true">
-				<reportElement style="Default" x="338" y="38" width="55" height="14" uuid="be2cb580-a247-4007-8fe2-6f22097a527a"/>
+				<reportElement style="Default" x="354" y="38" width="55" height="14" uuid="be2cb580-a247-4007-8fe2-6f22097a527a"/>
 				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA[($F{document.taxRate}.divide(new java.math.BigDecimal(100)))]]></textFieldExpression>
 			</textField>
@@ -435,11 +435,11 @@
 				<reportElement x="0" y="0" width="554" height="1" uuid="177596a7-888c-4fcb-a396-5b165cf3136c"/>
 			</line>
 			<staticText>
-				<reportElement style="Default" x="306" y="24" width="27" height="14" uuid="4ba93757-33e0-41fb-87f4-a3dd4ecebeb6"/>
+				<reportElement style="Default" x="322" y="24" width="27" height="14" uuid="4ba93757-33e0-41fb-87f4-a3dd4ecebeb6"/>
 				<text><![CDATA[EUR]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Default" x="306" y="38" width="27" height="14" uuid="5c976ab6-284b-4424-a272-46c6d13f653d"/>
+				<reportElement style="Default" x="322" y="38" width="27" height="14" uuid="5c976ab6-284b-4424-a272-46c6d13f653d"/>
 				<text><![CDATA[EUR]]></text>
 			</staticText>
 		</band>
