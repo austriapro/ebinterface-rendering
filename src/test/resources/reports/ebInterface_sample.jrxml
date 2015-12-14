@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.1.1.final using JasperReports Library version 6.1.1  -->
-<!-- 2015-12-14T23:50:04 -->
+<!-- 2015-12-15T00:37:04 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ERPEL_STR_INVOICE_TYPE_2" pageWidth="595" pageHeight="852" whenNoDataType="AllSectionsNoDetail" columnWidth="483" leftMargin="56" rightMargin="56" topMargin="85" bottomMargin="26" isSummaryWithPageHeaderAndFooter="true" uuid="4eedbb89-b4f6-4469-9ab6-f642a1688cf7">
 	<property name="template.engine" value="tabular_template"/>
 	<property name="com.jaspersoft.studio.unit.topMargin" value="cm"/>
@@ -43,6 +43,9 @@
 	</field>
 	<field name="document.currency" class="java.lang.String">
 		<fieldDescription><![CDATA[/Invoice/@InvoiceCurrency]]></fieldDescription>
+	</field>
+	<field name="document.totalgrossamount" class="java.lang.Float">
+		<fieldDescription><![CDATA[/Invoice/TotalGrossAmount]]></fieldDescription>
 	</field>
 	<field name="document.headerdescription" class="java.lang.String">
 		<fieldDescription><![CDATA[/Invoice/Details/HeaderDescription]]></fieldDescription>
@@ -229,6 +232,15 @@
 	</field>
 	<field name="orderingparty.billerid" class="java.lang.String">
 		<fieldDescription><![CDATA[/Invoice/OrderingParty/BillersOrderingPartyID]]></fieldDescription>
+	</field>
+	<field name="tax.taxedamount" class="java.lang.Float">
+		<fieldDescription><![CDATA[/Invoice/Tax/VAT/VATItem/TaxedAmount]]></fieldDescription>
+	</field>
+	<field name="tax.vatrate" class="java.lang.Float">
+		<fieldDescription><![CDATA[/Invoice/Tax/VAT/VATItem/VATRate]]></fieldDescription>
+	</field>
+	<field name="tax.amount" class="java.lang.Float">
+		<fieldDescription><![CDATA[/Invoice/Tax/VAT/VATItem/Amount]]></fieldDescription>
 	</field>
 	<field name="detail.headerdescription" class="java.lang.String">
 		<fieldDescription><![CDATA[../HeaderDescription]]></fieldDescription>
@@ -879,7 +891,7 @@
 			</line>
 			<frame>
 				<reportElement key="" x="202" y="23" width="281" height="27" uuid="2057ab1c-6a85-4888-8a42-0af1fd66c684">
-					<printWhenExpression><![CDATA[$F{hasAdditionalChargesAndReduction}]]></printWhenExpression>
+					<printWhenExpression><![CDATA[false]]></printWhenExpression>
 				</reportElement>
 				<staticText>
 					<reportElement x="1" y="1" width="69" height="12" uuid="483cb25a-d0ad-488c-8650-52245b07f950">
@@ -1113,7 +1125,7 @@
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 						<property name="local_mesure_unitheight" value="pixel"/>
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
-						<printWhenExpression><![CDATA[$F{taxExemption} != null]]></printWhenExpression>
+						<printWhenExpression><![CDATA[false]]></printWhenExpression>
 					</reportElement>
 					<textElement textAlignment="Right"/>
 					<textFieldExpression><![CDATA[$F{taxExemption}]]></textFieldExpression>
@@ -1126,21 +1138,16 @@
 					<textElement textAlignment="Right">
 						<font isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{documentCurrency} + " " + String.format($P{REPORT_LOCALE},"%,1.2f", $F{invoiceAmount})]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{document.currency} + " " + String.format($P{REPORT_LOCALE},"%,1.2f", $F{document.totalgrossamount})]]></textFieldExpression>
 				</textField>
 				<textField>
 					<reportElement x="372" y="0" width="110" height="18" uuid="dc418784-0c1d-415a-a685-2344d2cda589"/>
 					<textElement textAlignment="Right"/>
-					<textFieldExpression><![CDATA[$F{documentCurrency} + " " + 
-($F{taxExemption} == null ? 
-  String.format($P{REPORT_LOCALE},"%,1.2f", $F{taxableAmount})
-  :
-  String.format($P{REPORT_LOCALE},"%,1.2f", $F{taxableBeforeDiscount})
-)]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{document.currency} + " " + String.format($P{REPORT_LOCALE},"%,1.2f", $V{taxablebeforediscount})]]></textFieldExpression>
 				</textField>
 				<frame>
 					<reportElement x="121" y="20" width="361" height="39" uuid="a09882de-4194-40b6-a987-b1ba71e63713">
-						<printWhenExpression><![CDATA[$F{taxExemption} == null]]></printWhenExpression>
+						<printWhenExpression><![CDATA[true]]></printWhenExpression>
 					</reportElement>
 					<textField>
 						<reportElement positionType="Float" x="-1" y="19" width="240" height="19" uuid="212e06e8-4ea0-4bca-a4e2-5e93e0fb619c">
@@ -1158,7 +1165,7 @@
 							<property name="com.jaspersoft.studio.unit.height" value="px"/>
 						</reportElement>
 						<textElement textAlignment="Right"/>
-						<textFieldExpression><![CDATA[$F{documentCurrency} + " " + String.format($P{REPORT_LOCALE},"%,1.2f", $F{taxAmount})]]></textFieldExpression>
+						<textFieldExpression><![CDATA[$F{document.currency} + " " + String.format($P{REPORT_LOCALE},"%,1.2f", $F{tax.amount})]]></textFieldExpression>
 					</textField>
 					<textField>
 						<reportElement x="-1" y="0" width="240" height="19" uuid="81f2e819-bd58-4c27-af4c-9f8c6017c526">
@@ -1166,12 +1173,12 @@
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 						</reportElement>
 						<textElement textAlignment="Right"/>
-						<textFieldExpression><![CDATA["zzgl. Umsatzsteuer " + String.format($P{REPORT_LOCALE},"%1.2f", $F{taxRate}) + "%"]]></textFieldExpression>
+						<textFieldExpression><![CDATA["zzgl. Umsatzsteuer " + String.format($P{REPORT_LOCALE},"%1.2f", $F{tax.vatrate}) + "%"]]></textFieldExpression>
 					</textField>
 					<textField pattern="">
 						<reportElement x="251" y="0" width="110" height="19" uuid="8a881e90-263e-4f18-99f9-1e714266a071"/>
 						<textElement textAlignment="Right"/>
-						<textFieldExpression><![CDATA[$F{documentCurrency} + " " + String.format($P{REPORT_LOCALE},"%,1.2f", $F{taxAmount})]]></textFieldExpression>
+						<textFieldExpression><![CDATA[$F{document.currency} + " " + String.format($P{REPORT_LOCALE},"%,1.2f", $F{tax.taxedamount})]]></textFieldExpression>
 					</textField>
 				</frame>
 			</frame>
