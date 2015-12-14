@@ -18,6 +18,7 @@
         <jasperreports-fonts-version>6.0.0</jasperreports-fonts-version>
         <xalan-version>2.7.2</xalan-version>
         <pdfbox-version>1.8.8</pdfbox-version>
+        <xmpcore-version>5.1.2</xmpcore-version>
         <commons-io-version>2.4</commons-io-version>
         <junit-version>4.12</junit-version>
     </properties>
@@ -51,6 +52,12 @@
             <groupId>org.apache.pdfbox</groupId>
             <artifactId>pdfbox</artifactId>
             <version>${pdfbox-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.adobe.xmp</groupId>
+            <artifactId>xmpcore</artifactId>
+            <version>${xmpcore-version}</version>
         </dependency>
 
         <!--Test dependencies-->

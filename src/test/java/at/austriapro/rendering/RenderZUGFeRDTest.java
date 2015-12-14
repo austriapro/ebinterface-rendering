@@ -1,7 +1,5 @@
 package at.austriapro.rendering;
 
-
-import java.awt.Desktop;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.junit.Test;
@@ -12,7 +10,7 @@ import org.slf4j.LoggerFactory;
 import java.io.File;
 import java.io.InputStream;
 
-import at.austriapro.rendering.util.OSDetector;
+import at.austriapro.rendering.util.RenderUtil;
 
 /**
  * Created by Paul on 29.10.2015.
@@ -48,42 +46,13 @@ public class RenderZUGFeRDTest {
 
         LOG.info("File written to " + file.getAbsolutePath());
 
-        openFile(file);
+        if (OPENFILES) {
+            try {
+                RenderUtil.openFile(file);
 
-    }
-
-
-    /**
-     * Opens a file, if the operating system is either windows or mac (= local development)
-     */
-    private boolean openFile(File file) {
-
-        // change the flag for easier local development of pdf files
-        if (OPENFILES == false) {
-            return false;
-        }
-
-        try {
-            if (OSDetector.isWindows()) {
-                Runtime.getRuntime()
-                    .exec(new String[]{"rundll32", "url.dll,FileProtocolHandler",
-                                       file.getAbsolutePath()});
-                return true;
-            } else if (OSDetector.isMac()) {
-                Runtime.getRuntime().exec(new String[]{"/usr/bin/open", file.getAbsolutePath()});
-                return true;
-
-            } else if (OSDetector.isLinux()) {
-                java.awt.Desktop.getDesktop().open(file);
-                return true;
-
-            } else {
-                return false;
+            } catch (Exception e) {
+                LOG.error(e.getMessage(), e);
             }
-        } catch (Exception e) {
-            LOG.error(e.getMessage(), e);
-            return false;
         }
     }
-
 }

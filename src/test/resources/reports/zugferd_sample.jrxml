@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.0.4.final using JasperReports Library version 6.0.4  -->
-<!-- 2015-11-04T14:14:11 -->
+<!-- Created with Jaspersoft Studio version 6.1.1.final using JasperReports Library version 6.1.1  -->
+<!-- 2015-12-11T12:21:22 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ZUGeRD Sample" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isSummaryWithPageHeaderAndFooter="true" uuid="a72dec89-32b1-4281-ac4c-2ca66bdbfe45">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<style name="Default" isDefault="true" forecolor="#000000" backcolor="#FFFFFF" fontName="Open Sans" fontSize="10" pdfFontName="Open Sans" isPdfEmbedded="true"/>
@@ -360,7 +360,7 @@
 			<textField evaluationTime="Report">
 				<reportElement x="485" y="4" width="69" height="20" uuid="654aee47-914f-41ad-8d35-02e705ddfd71"/>
 				<textElement textAlignment="Left"/>
-				<textFieldExpression><![CDATA[" bis " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[" von " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement x="0" y="0" width="554" height="1" uuid="a3c6c7bd-2716-4e25-8d2d-25fa3e34a529"/>
