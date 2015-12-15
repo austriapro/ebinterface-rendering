@@ -149,6 +149,11 @@
                 <VATRate n1:TaxCode="AT022">20</VATRate>
                 <Amount>1360</Amount>
             </VATItem>
+            <VATItem>
+                <TaxedAmount>1000</TaxedAmount>
+                <VATRate n1:TaxCode="AT022">10</VATRate>
+                <Amount>100</Amount>
+            </VATItem>
         </VAT>
     </Tax>
     <TotalGrossAmount>8160</TotalGrossAmount>
