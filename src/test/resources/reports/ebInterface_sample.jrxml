@@ -1,39 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.1.1.final using JasperReports Library version 6.1.1  -->
-<!-- 2015-12-15T00:37:04 -->
+<!-- 2015-12-15T01:22:49 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ERPEL_STR_INVOICE_TYPE_2" pageWidth="595" pageHeight="852" whenNoDataType="AllSectionsNoDetail" columnWidth="483" leftMargin="56" rightMargin="56" topMargin="85" bottomMargin="26" isSummaryWithPageHeaderAndFooter="true" uuid="4eedbb89-b4f6-4469-9ab6-f642a1688cf7">
 	<property name="template.engine" value="tabular_template"/>
 	<property name="com.jaspersoft.studio.unit.topMargin" value="cm"/>
 	<property name="com.jaspersoft.studio.unit.bottomMargin" value="cm"/>
 	<property name="com.jaspersoft.studio.unit.leftMargin" value="cm"/>
 	<property name="com.jaspersoft.studio.unit.rightMargin" value="cm"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<style name="Default" isDefault="true" forecolor="#000000" backcolor="#FFFFFF" fontName="Open Sans" fontSize="10" isBold="false" pdfFontName="Open Sans"/>
 	<style name="Title" forecolor="#000000" backcolor="#FFFFFF" fontName="Open Sans" fontSize="14" isBold="true" pdfFontName="Open Sans" isPdfEmbedded="true"/>
 	<style name="SubTitle" forecolor="#CCCCCC" backcolor="#FFFFFF" fontName="Open Sans" fontSize="12" isBold="false" pdfFontName="Open Sans"/>
 	<style name="Column header" forecolor="#666666" fontName="Open Sans" fontSize="10" isBold="true" pdfFontName="Open Sans"/>
 	<style name="Detail" mode="Transparent" fontName="Open Sans" pdfFontName="Open Sans"/>
-	<subDataset name="AdditionalChargesAndReductions" uuid="d76936fe-d991-4e85-9a3f-2ab4abae34f6">
-		<parameter name="P_DocumentCurrency" class="java.lang.String"/>
-		<parameter name="JasperReportsUtil" class="at.erpel.rendering.pdf.utils.JasperReportsUtil"/>
-		<queryString language="XPath">
-			<![CDATA[/ErpelMessage/Document[1]/DocumentExtension/DocumentExtension/INVOICExtension/AdditionalChargesAndReductions/AdditionalChargeAndReduction]]>
-		</queryString>
-		<field name="type" class="java.lang.String">
-			<fieldDescription><![CDATA[Type]]></fieldDescription>
-		</field>
-		<field name="baseAmount" class="java.lang.Float">
-			<fieldDescription><![CDATA[BaseAmount]]></fieldDescription>
-		</field>
-		<field name="percentage" class="java.lang.Float">
-			<fieldDescription><![CDATA[Percentage]]></fieldDescription>
-		</field>
-		<field name="amount" class="java.lang.Float">
-			<fieldDescription><![CDATA[Amount]]></fieldDescription>
-		</field>
-	</subDataset>
 	<parameter name="senderLogo" class="java.io.InputStream"/>
 	<queryString language="XPath">
-		<![CDATA[/ErpelMessage/Document[1]/Details/ItemList/ListLineItem]]>
+		<![CDATA[/Invoice/Details/ItemList/ListLineItem]]>
 	</queryString>
 	<field name="document.invoicenumber" class="java.lang.String">
 		<fieldDescription><![CDATA[/Invoice/InvoiceNumber]]></fieldDescription>
@@ -263,7 +245,7 @@
 	<field name="detail.vatrate" class="java.lang.Float">
 		<fieldDescription><![CDATA[VATRate]]></fieldDescription>
 	</field>
-	<field name="detail.lineitemamount" class="java.lang.String">
+	<field name="detail.lineitemamount" class="java.lang.Float">
 		<fieldDescription><![CDATA[LineItemAmount]]></fieldDescription>
 	</field>
 	<field name="detail.hasbaseqty" class="java.lang.Boolean">
@@ -355,7 +337,6 @@
 					<reportElement key="" positionType="Float" x="0" y="0" width="482" height="15" uuid="6ce86186-a5a1-4c29-8b52-4428c30ee7b8">
 						<property name="local_mesure_unitheight" value="pixel"/>
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
-						<printWhenExpression><![CDATA[$F{supplier.GLN} != null || $F{supplier.hasAddress}]]></printWhenExpression>
 					</reportElement>
 					<textElement markup="html">
 						<font size="10" isBold="false"/>
@@ -368,7 +349,7 @@
 + (($F{biller.address.zip} == null && $F{biller.address.town} == null) ? "" : 
 	(($F{biller.address.zip}==null?"":($F{biller.address.zip}+" "))+($F{biller.address.town}==null?"":$F{biller.address.town})+"<br>")
   )
-+ ($F{biller.address.country} == null ? "" : ($F{biller.address.country}+"<b>"))
++ ($F{biller.address.country} == null ? "" : ($F{biller.address.country}+"<br>"))
 + ($F{biller.address.gln} == null ? "" : ("GLN: "+$F{biller.address.gln}+"<br>"))
 + ($F{biller.address.phone} == null ? "" : ("Telefon: "+$F{biller.address.phone}+"<br>"))
 + ($F{biller.address.email} == null ? "" : ("Email: "+$F{biller.address.email}+"<br>"))
@@ -377,10 +358,9 @@
 +"</html>"]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-					<reportElement key="" positionType="Float" x="0" y="15" width="204" height="15" uuid="0582ed23-3569-4947-843d-fe1ee93c5192">
+					<reportElement key="" positionType="Float" x="0" y="15" width="250" height="15" uuid="0582ed23-3569-4947-843d-fe1ee93c5192">
 						<property name="local_mesure_unitheight" value="pixel"/>
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
-						<printWhenExpression><![CDATA[$F{customer.GLN} != null || $F{customer.hasAddress}]]></printWhenExpression>
 					</reportElement>
 					<textElement markup="html">
 						<font size="10" isBold="false"/>
@@ -393,7 +373,7 @@
 + (($F{invoicerecipient.address.zip} == null && $F{invoicerecipient.address.town} == null) ? "" : 
 	(($F{invoicerecipient.address.zip}==null?"":($F{invoicerecipient.address.zip}+" "))+($F{invoicerecipient.address.town}==null?"":$F{invoicerecipient.address.town})+"<br>")
   )
-+ ($F{invoicerecipient.address.country} == null ? "" : ($F{invoicerecipient.address.country}+"<b>"))
++ ($F{invoicerecipient.address.country} == null ? "" : ($F{invoicerecipient.address.country}+"<br>"))
 + ($F{invoicerecipient.address.gln} == null ? "" : ("GLN: "+$F{invoicerecipient.address.gln}+"<br>"))
 + ($F{invoicerecipient.address.phone} == null ? "" : ("Telefon: "+$F{invoicerecipient.address.phone}+"<br>"))
 + ($F{invoicerecipient.address.email} == null ? "" : ("Email: "+$F{invoicerecipient.address.email}+"<br>"))
@@ -403,10 +383,10 @@
 +"</html>"]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement key="" positionType="Float" x="0" y="30" width="204" height="15" uuid="004b68e4-a724-4e53-b064-2a5ff02e4354">
+					<reportElement key="" positionType="Float" x="0" y="30" width="250" height="15" uuid="004b68e4-a724-4e53-b064-2a5ff02e4354">
 						<property name="local_mesure_unitheight" value="pixel"/>
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
-						<printWhenExpression><![CDATA[$F{deliveryPiont.GLN} != null || $F{deliveryPiont.hasAddress}]]></printWhenExpression>
+						<printWhenExpression><![CDATA[$F{delivery.address.street} != null]]></printWhenExpression>
 					</reportElement>
 					<textElement markup="html">
 						<font size="10" isBold="false"/>
@@ -419,7 +399,7 @@
 + (($F{delivery.address.zip} == null && $F{delivery.address.town} == null) ? "" : 
 	(($F{delivery.address.zip}==null?"":($F{delivery.address.zip}+" "))+($F{delivery.address.town}==null?"":$F{delivery.address.town})+"<br>")
   )
-+ ($F{delivery.address.country} == null ? "" : ($F{delivery.address.country}+"<b>"))
++ ($F{delivery.address.country} == null ? "" : ($F{delivery.address.country}+"<br>"))
 + ($F{delivery.address.gln} == null ? "" : ("GLN: "+$F{delivery.address.gln}+"<br>"))
 + ($F{delivery.address.phone} == null ? "" : ("Telefon: "+$F{delivery.address.phone}+"<br>"))
 + ($F{delivery.address.email} == null ? "" : ("Email: "+$F{delivery.address.email}+"<br>"))
@@ -430,7 +410,7 @@
 					<reportElement key="" positionType="Float" x="299" y="15" width="183" height="15" uuid="7e9ba569-9f10-4c5f-a90b-8aad37a54e9f">
 						<property name="local_mesure_unitheight" value="pixel"/>
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
-						<printWhenExpression><![CDATA[$F{orderingparty.GLN} != null || $F{orderingparty.hasAddress}]]></printWhenExpression>
+						<printWhenExpression><![CDATA[$F{orderingparty.address.street} != null]]></printWhenExpression>
 					</reportElement>
 					<textElement markup="html">
 						<font size="10" isBold="false"/>
@@ -443,7 +423,7 @@
 + (($F{orderingparty.address.zip} == null && $F{orderingparty.address.town} == null) ? "" : 
 	(($F{orderingparty.address.zip}==null?"":($F{orderingparty.address.zip}+" "))+($F{orderingparty.address.town}==null?"":$F{orderingparty.address.town})+"<br>")
   )
-+ ($F{orderingparty.address.country} == null ? "" : ($F{orderingparty.address.country}+"<b>"))
++ ($F{orderingparty.address.country} == null ? "" : ($F{orderingparty.address.country}+"<br>"))
 + ($F{orderingparty.address.gln} == null ? "" : ("GLN: "+$F{orderingparty.address.gln}+"<br>"))
 + ($F{orderingparty.address.phone} == null ? "" : ("Telefon: "+$F{orderingparty.address.phone}+"<br>"))
 + ($F{orderingparty.address.email} == null ? "" : ("Email: "+$F{orderingparty.address.email}+"<br>"))
@@ -467,7 +447,7 @@
 						<font size="10" isBold="false"/>
 						<paragraph tabStopWidth="150"/>
 					</textElement>
-					<textFieldExpression><![CDATA[+ "Währung:\t" + $F{document.currency} + "\n"
+					<textFieldExpression><![CDATA["Währung:\t" + $F{document.currency} + "\n"
 + "Rechnungsnummer:\t" + $F{document.invoicenumber} + "\tVom: " + new SimpleDateFormat("dd.MM.yyyy").format($F{document.invoicedate}) + "\n"
 + ($F{delivery.deliveryid}!= null ? "Liefernummer:\t" + $F{delivery.deliveryid} 
 	+ (($F{delivery.deliverydate}!= null) ? "\tAm: " + new SimpleDateFormat("dd.MM.yyyy").format($F{delivery.deliverydate}) : 
@@ -833,7 +813,7 @@
 		</band>
 	</pageFooter>
 	<summary>
-		<band height="164" splitType="Immediate">
+		<band height="119" splitType="Immediate">
 			<line>
 				<reportElement x="0" y="0" width="483" height="1" uuid="c7c1f4ff-0ee9-4fcf-9e78-731286346213">
 					<property name="local_mesure_unitheight" value="pixel"/>
@@ -890,222 +870,11 @@
 				</reportElement>
 			</line>
 			<frame>
-				<reportElement key="" x="202" y="23" width="281" height="27" uuid="2057ab1c-6a85-4888-8a42-0af1fd66c684">
-					<printWhenExpression><![CDATA[false]]></printWhenExpression>
-				</reportElement>
-				<staticText>
-					<reportElement x="1" y="1" width="69" height="12" uuid="483cb25a-d0ad-488c-8650-52245b07f950">
-						<property name="local_mesure_unitheight" value="pixel"/>
-						<property name="com.jaspersoft.studio.unit.height" value="px"/>
-						<property name="local_mesure_unitwidth" value="pixel"/>
-						<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					</reportElement>
-					<box rightPadding="4">
-						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					</box>
-					<textElement textAlignment="Center">
-						<font size="8" isBold="true"/>
-					</textElement>
-					<text><![CDATA[Zu-/Abschläge]]></text>
-				</staticText>
-				<staticText>
-					<reportElement x="71" y="1" width="69" height="12" uuid="5ca37c26-6566-40d0-8f04-2a97531ce546">
-						<property name="com.jaspersoft.studio.unit.height" value="px"/>
-						<property name="local_mesure_unitwidth" value="pixel"/>
-						<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					</reportElement>
-					<box rightPadding="4">
-						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					</box>
-					<textElement textAlignment="Center">
-						<font size="8" isBold="true"/>
-					</textElement>
-					<text><![CDATA[Basisbetrag]]></text>
-				</staticText>
-				<staticText>
-					<reportElement x="141" y="1" width="69" height="12" uuid="e9dc5e8f-84d8-4f07-bf63-25fce809e07c">
-						<property name="com.jaspersoft.studio.unit.height" value="px"/>
-						<property name="local_mesure_unitwidth" value="pixel"/>
-						<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					</reportElement>
-					<box rightPadding="4">
-						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					</box>
-					<textElement textAlignment="Center">
-						<font size="8" isBold="true"/>
-					</textElement>
-					<text><![CDATA[Prozentsatz]]></text>
-				</staticText>
-				<staticText>
-					<reportElement x="211" y="1" width="69" height="12" uuid="ecfce80c-b708-4d5b-9c58-a8400fe907cb">
-						<property name="com.jaspersoft.studio.unit.height" value="px"/>
-						<property name="local_mesure_unitwidth" value="pixel"/>
-						<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					</reportElement>
-					<box rightPadding="4">
-						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					</box>
-					<textElement textAlignment="Center">
-						<font size="8" isBold="true"/>
-					</textElement>
-					<text><![CDATA[Betrag]]></text>
-				</staticText>
-				<line>
-					<reportElement x="0" y="0" width="281" height="1" uuid="4208f54d-b80c-47ac-88f2-b81637b6695c">
-						<property name="local_mesure_unitwidth" value="pixel"/>
-						<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					</reportElement>
-				</line>
-				<line>
-					<reportElement x="0" y="13" width="281" height="1" uuid="927c3905-3a5b-4430-b811-c8c0552dabcb">
-						<property name="local_mesure_unitwidth" value="pixel"/>
-						<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					</reportElement>
-				</line>
-				<line>
-					<reportElement x="0" y="1" width="1" height="12" uuid="3ca44097-7b0e-419a-8de8-e80484fcef5b"/>
-				</line>
-				<line>
-					<reportElement x="70" y="1" width="1" height="12" uuid="c3591d5e-2254-4f39-b3b4-459887b75cbc"/>
-				</line>
-				<line>
-					<reportElement x="140" y="1" width="1" height="12" uuid="978ac234-690e-43c4-8a98-7a0df0c68fb0"/>
-				</line>
-				<line>
-					<reportElement x="210" y="1" width="1" height="12" uuid="07f97093-45dc-46dc-8c5e-9ba4f61afc6d"/>
-				</line>
-				<line>
-					<reportElement x="280" y="1" width="1" height="12" uuid="9229a146-113c-442a-b1fe-5359eb1bc0bc"/>
-				</line>
-				<componentElement>
-					<reportElement x="0" y="14" width="281" height="13" uuid="676a9ab6-9f81-481a-84da-0b72a057cb0e"/>
-					<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
-						<datasetRun subDataset="AdditionalChargesAndReductions" uuid="5c89cbe4-f7ae-4e5f-addc-965f7fd785db">
-							<datasetParameter name="XML_DATA_DOCUMENT">
-								<datasetParameterExpression><![CDATA[$P{XML_DATA_DOCUMENT}]]></datasetParameterExpression>
-							</datasetParameter>
-							<datasetParameter name="XML_NUMBER_PATTERN">
-								<datasetParameterExpression><![CDATA[$P{XML_NUMBER_PATTERN}]]></datasetParameterExpression>
-							</datasetParameter>
-							<datasetParameter name="XML_LOCALE">
-								<datasetParameterExpression><![CDATA[$P{XML_LOCALE}]]></datasetParameterExpression>
-							</datasetParameter>
-							<datasetParameter name="XML_INPUT_STREAM">
-								<datasetParameterExpression><![CDATA[$P{XML_INPUT_STREAM}]]></datasetParameterExpression>
-							</datasetParameter>
-							<datasetParameter name="XML_FILE">
-								<datasetParameterExpression><![CDATA[$P{XML_FILE}]]></datasetParameterExpression>
-							</datasetParameter>
-							<datasetParameter name="net.sf.jasperreports.xml.source">
-								<datasetParameterExpression><![CDATA[$P{net.sf.jasperreports.xml.source}]]></datasetParameterExpression>
-							</datasetParameter>
-							<datasetParameter name="XML_DATE_PATTERN">
-								<datasetParameterExpression><![CDATA[$P{XML_DATE_PATTERN}]]></datasetParameterExpression>
-							</datasetParameter>
-							<datasetParameter name="XML_TIME_ZONE">
-								<datasetParameterExpression><![CDATA[$P{XML_TIME_ZONE}]]></datasetParameterExpression>
-							</datasetParameter>
-							<datasetParameter name="P_DocumentCurrency">
-								<datasetParameterExpression><![CDATA[$F{documentCurrency}]]></datasetParameterExpression>
-							</datasetParameter>
-							<datasetParameter name="JasperReportsUtil">
-								<datasetParameterExpression><![CDATA[$P{JasperReportsUtil}]]></datasetParameterExpression>
-							</datasetParameter>
-						</datasetRun>
-						<jr:listContents height="13" width="281">
-							<line>
-								<reportElement x="0" y="0" width="1" height="12" uuid="8d71ebb1-b238-499f-aa81-a6ddaf12932b"/>
-							</line>
-							<line>
-								<reportElement x="0" y="12" width="281" height="1" uuid="b85e3493-3531-41de-ab28-073ed5c815d9">
-									<property name="local_mesure_unitwidth" value="pixel"/>
-									<property name="com.jaspersoft.studio.unit.width" value="px"/>
-								</reportElement>
-							</line>
-							<line>
-								<reportElement x="70" y="0" width="1" height="12" uuid="89d4d19b-f244-4061-adbf-67efb44918ca"/>
-							</line>
-							<line>
-								<reportElement x="140" y="0" width="1" height="12" uuid="ad020ce8-914e-4fcf-a97e-d50aa3044bd3"/>
-							</line>
-							<line>
-								<reportElement x="210" y="0" width="1" height="12" uuid="cb1c7489-5d06-44d5-b7f1-0cf693232cfa"/>
-							</line>
-							<line>
-								<reportElement x="280" y="0" width="1" height="12" uuid="94986c59-741d-41f3-81b7-6adfafaffd0a"/>
-							</line>
-							<textField>
-								<reportElement x="3" y="0" width="67" height="12" uuid="01332dbb-c849-4350-8467-c2718f272c3d">
-									<property name="local_mesure_unitwidth" value="pixel"/>
-									<property name="com.jaspersoft.studio.unit.width" value="px"/>
-								</reportElement>
-								<textElement textAlignment="Left">
-									<font size="8"/>
-								</textElement>
-								<textFieldExpression><![CDATA[$F{type} == null ? "" : $P{JasperReportsUtil}.translate($F{type}, $P{REPORT_LOCALE})]]></textFieldExpression>
-							</textField>
-							<textField pattern="###,###,##0.00">
-								<reportElement x="71" y="0" width="67" height="12" uuid="31068572-67f5-4e15-8a5f-7cf888051f81">
-									<property name="local_mesure_unitwidth" value="pixel"/>
-									<property name="com.jaspersoft.studio.unit.width" value="px"/>
-								</reportElement>
-								<textElement textAlignment="Right">
-									<font size="8"/>
-								</textElement>
-								<textFieldExpression><![CDATA[$F{baseAmount} == null ? "" : $F{baseAmount}]]></textFieldExpression>
-							</textField>
-							<textField pattern="###,###,##0.00">
-								<reportElement x="141" y="0" width="67" height="12" uuid="78e0ad41-cb33-424a-999e-6c516cff47bf">
-									<property name="local_mesure_unitwidth" value="pixel"/>
-									<property name="com.jaspersoft.studio.unit.width" value="px"/>
-								</reportElement>
-								<textElement textAlignment="Right">
-									<font size="8"/>
-								</textElement>
-								<textFieldExpression><![CDATA[$F{percentage} == null ? "" : $F{percentage}]]></textFieldExpression>
-							</textField>
-							<textField pattern="###,###,##0.00">
-								<reportElement x="211" y="0" width="67" height="12" uuid="c110a870-935d-43b5-9dcf-3c64975c9278">
-									<property name="local_mesure_unitwidth" value="pixel"/>
-									<property name="com.jaspersoft.studio.unit.width" value="px"/>
-								</reportElement>
-								<textElement textAlignment="Right">
-									<font size="8"/>
-								</textElement>
-								<textFieldExpression><![CDATA[$F{amount} == null ? "" : $F{amount}]]></textFieldExpression>
-							</textField>
-						</jr:listContents>
-					</jr:list>
-				</componentElement>
-			</frame>
-			<frame>
-				<reportElement positionType="Float" x="1" y="56" width="482" height="108" uuid="e19819d0-3e94-48d2-a7e8-0d02740e524f"/>
+				<reportElement positionType="Float" x="1" y="31" width="482" height="88" uuid="e19819d0-3e94-48d2-a7e8-0d02740e524f"/>
 				<textField>
 					<reportElement x="120" y="0" width="240" height="19" uuid="dfd96c31-9174-444b-b0dc-61a164406860"/>
 					<textElement textAlignment="Right"/>
 					<textFieldExpression><![CDATA["Rechnungssumme Netto (exkl. USt.)"]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-					<reportElement positionType="Float" x="0" y="93" width="482" height="15" uuid="b96f7183-44f8-43ad-ba60-43d8fbf50b6e">
-						<property name="local_mesure_unitwidth" value="pixel"/>
-						<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					</reportElement>
-					<textElement textAlignment="Center">
-						<font size="8"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{paymentComment}]]></textFieldExpression>
 				</textField>
 				<textField>
 					<reportElement x="120" y="62" width="240" height="20" uuid="f039c200-696a-4044-a5e1-17d861699e0e">
@@ -1128,7 +897,6 @@
 						<printWhenExpression><![CDATA[false]]></printWhenExpression>
 					</reportElement>
 					<textElement textAlignment="Right"/>
-					<textFieldExpression><![CDATA[$F{taxExemption}]]></textFieldExpression>
 				</textField>
 				<textField>
 					<reportElement x="372" y="62" width="110" height="20" uuid="c9a5d8f9-4c73-4092-b6d7-bdef9e670506">

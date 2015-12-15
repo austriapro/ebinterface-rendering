@@ -11,8 +11,8 @@
          xmlns:sv="http://www.ebinterface.at/schema/4p1/extensions/sv"
          xmlns:dsig="http://www.w3.org/2000/09/xmldsig#"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
---    <InvoiceNumber>RNR 2014/2</InvoiceNumber>
---    <InvoiceDate>2014-02-16</InvoiceDate>
+    <InvoiceNumber>RNR 2014/2</InvoiceNumber>
+    <InvoiceDate>2014-02-16</InvoiceDate>
     <CancelledOriginalDocument>
         <InvoiceNumber>RNR 49384</InvoiceNumber>
         <InvoiceDate>2014-02-18</InvoiceDate>
@@ -32,7 +32,7 @@
         <Comment>Teilrechnung 2</Comment>
     </RelatedDocument>
     <Delivery>
-        <DeliveryID>4893</DeliveryID> 
+        <DeliveryID>4893</DeliveryID>
         <Date>2014-02-15</Date>
         <Address>
             <AddressIdentifier n1:AddressIdentifierType="GLN">5632545698754</AddressIdentifier>
