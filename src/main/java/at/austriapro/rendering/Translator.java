@@ -40,12 +40,13 @@ public class Translator {
     i18n.setLocale(locale);
 
     String translation;
+    String transKey = key.toUpperCase();
 
-    LOG.debug("Translating key " + key);
-    translation = i18n.tr(key.toUpperCase());
+    LOG.debug("Translating key " + transKey);
+    translation = i18n.tr(transKey);
 
-    if (translation.equals(key)) {
-      LOG.error("Unable to translate key {} - now taking the key value as translation", key);
+    if (translation.equals(transKey)) {
+      LOG.error("Unable to translate key {} - now taking the key value as translation", transKey);
     }
     return translation;
   }
