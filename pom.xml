@@ -21,6 +21,7 @@
         <xmpcore-version>5.1.2</xmpcore-version>
         <commons-io-version>2.4</commons-io-version>
         <junit-version>4.12</junit-version>
+        <gettext-commons-version>0.9.8</gettext-commons-version>
     </properties>
 
     <dependencies>
@@ -58,6 +59,13 @@
             <groupId>com.adobe.xmp</groupId>
             <artifactId>xmpcore</artifactId>
             <version>${xmpcore-version}</version>
+        </dependency>
+
+        <!-- java i18n http://code.google.com/p/gettext-commons/ -->
+        <dependency>
+            <groupId>com.googlecode.gettext-commons</groupId>
+            <artifactId>gettext-commons</artifactId>
+            <version>0.9.8</version>
         </dependency>
 
         <!--Test dependencies-->
