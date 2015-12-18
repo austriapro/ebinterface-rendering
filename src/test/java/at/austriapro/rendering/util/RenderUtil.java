@@ -10,7 +10,7 @@ public class RenderUtil {
   /**
    * Opens a file, if the operating system is either windows or mac (= local development)
    */
-  public static void openFile(File file) throws Exception{
+  public static void openFile(File file) throws Exception {
     if (OSDetector.isWindows()) {
       Runtime.getRuntime()
           .exec(new String[]{"rundll32", "url.dll,FileProtocolHandler",

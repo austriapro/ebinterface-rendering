@@ -11,7 +11,7 @@ public class ZugferdRenderer extends BaseRenderer {
 
   private static final String iccProfilePath = "sRGB_IEC61966-2-1_black_scaled.icc";
 
-  public ZugferdRenderer(){
+  public ZugferdRenderer() {
     super();
     reportTitle = "ZUGFeRD";
     xmlDatePattern = "yyyy-MM-dd'T'HH:mm:ss";

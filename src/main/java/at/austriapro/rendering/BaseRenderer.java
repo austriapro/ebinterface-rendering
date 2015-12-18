@@ -75,8 +75,6 @@ public class BaseRenderer {
     configuration.setMetadataSubject(reportSubject);
     configuration.setMetadataTitle(reportTitle);
 
-    configuration.isDisplayMetadataTitle();
-
     // Include structure tags for PDF/A-1a compliance; unnecessary for PDF/A-1b
     configuration.setTagged(true);
 

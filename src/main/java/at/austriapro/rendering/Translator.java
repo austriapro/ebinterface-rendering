@@ -19,7 +19,7 @@ public class Translator {
 
   private static final I18n i18n;
 
-  static{
+  static {
     i18n = I18nFactory.getI18n(Translator.class, "Messages");
   }
 
