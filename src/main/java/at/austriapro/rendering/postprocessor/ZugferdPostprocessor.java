@@ -38,12 +38,44 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.TransformerException;
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathExpression;
+import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
+import javax.xml.xpath.XPathFactoryConfigurationException;
 
 import at.austriapro.rendering.schema.XMPSchemaPDFAExtensions;
 import at.austriapro.rendering.schema.XMPSchemaZugferd;
 
 public class ZugferdPostprocessor {
+
+  private static final String SAXON_OBJECT_MODEL_URI = "http://saxon.sf.net/jaxp/xpath/om";
+
+  private static DocumentBuilderFactory DBF;
+  private static XPathExpression ZUGFERD_TYPE_XPATH;
+  private static XPathExpression ZUGFERD_DOCUMENT_NUMBER_XPATH;
+
+  static {
+    //Ensure that factories are only created once
+    DBF = DocumentBuilderFactory.newInstance();
+    XPathFactory XPF;
+    try {
+      XPF = XPathFactory.newInstance(SAXON_OBJECT_MODEL_URI);
+    } catch (XPathFactoryConfigurationException e) {
+      XPF = XPathFactory.newInstance();
+    }
+
+    //Create XPath expression only once, since it remains unaltered and is reused
+    XPath xpath = XPF.newXPath();
+    try {
+      ZUGFERD_TYPE_XPATH = xpath.compile(
+          "/*:CrossIndustryDocument/*:SpecifiedExchangedDocumentContext/*:GuidelineSpecifiedDocumentContextParameter/*:ID");
+      ZUGFERD_DOCUMENT_NUMBER_XPATH =
+          xpath.compile("/*:CrossIndustryDocument/*:HeaderExchangedDocument/*:ID");
+    } catch (XPathExpressionException e) {
+      throw new RuntimeException(
+          "Unable to compile XPath expression for determining the type of ZUGFeRD or number of ZUGFeRD document");
+    }
+  }
 
   public byte[] embedXMLtoPDF(byte[] pdf, byte[] xml) throws Exception {
     PDDocument pdfBoxDocument = PDDocument.load(new ByteArrayInputStream(pdf));
@@ -69,15 +101,8 @@ public class ZugferdPostprocessor {
   public ZugferdMetaData getZugferdMetaData(byte[] xml) throws Exception {
     ZugferdMetaData zMetadata = new ZugferdMetaData();
 
-    DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-    Document doc = dbf.newDocumentBuilder().parse(new ByteArrayInputStream(xml));
-    XPathFactory xPathfactory = XPathFactory.newInstance();
-    //Create XPath expression only once, since it remains unaltered and is reused
-    XPath xpath = xPathfactory.newXPath();
-    String zugferdType = (String) xpath.compile(
-        "/CrossIndustryDocument/SpecifiedExchangedDocumentContext/GuidelineSpecifiedDocumentContextParameter/ID")
-        .evaluate(
-            doc, XPathConstants.STRING);
+    Document doc = DBF.newDocumentBuilder().parse(new ByteArrayInputStream(xml));
+    String zugferdType = (String) ZUGFERD_TYPE_XPATH.evaluate(doc, XPathConstants.STRING);
 
     if (zugferdType.contains("basic")) {
       zMetadata.setProfile("BASIC");
@@ -91,8 +116,7 @@ public class ZugferdPostprocessor {
 
     String
         documentNumber =
-        (String) xpath.compile("/CrossIndustryDocument/HeaderExchangedDocument/ID").evaluate(doc,
-                                                                                             XPathConstants.STRING);
+        (String) ZUGFERD_DOCUMENT_NUMBER_XPATH.evaluate(doc, XPathConstants.STRING);
 
     if (documentNumber == null) {
       throw new Exception("XML contains no valid invoice number");

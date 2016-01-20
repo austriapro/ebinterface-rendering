@@ -1,5 +1,7 @@
 package at.austriapro.rendering;
 
+import net.sf.jasperreports.engine.JasperReport;
+
 import java.io.InputStream;
 
 import at.austriapro.rendering.postprocessor.ZugferdPostprocessor;
@@ -21,6 +23,17 @@ public class ZugferdRenderer extends BaseRenderer {
   public byte[] renderReport(byte[] jasperTemplate, byte[] zugferdXML, InputStream logo)
       throws Exception {
     byte[] pdfA1A = super.renderReport(jasperTemplate, zugferdXML, logo);
+
+    ZugferdPostprocessor zProcessor = new ZugferdPostprocessor();
+    byte[] pdfA3A = zProcessor.embedXMLtoPDF(pdfA1A, zugferdXML);
+
+    return pdfA3A;
+  }
+
+  @Override
+  public byte[] renderReport(JasperReport jasperReport, byte[] zugferdXML, InputStream logo)
+      throws Exception {
+    byte[] pdfA1A = super.renderReport(jasperReport, zugferdXML, logo);
 
     ZugferdPostprocessor zProcessor = new ZugferdPostprocessor();
     byte[] pdfA3A = zProcessor.embedXMLtoPDF(pdfA1A, zugferdXML);

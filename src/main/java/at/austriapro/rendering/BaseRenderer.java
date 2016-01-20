@@ -38,12 +38,17 @@ public class BaseRenderer {
 
   private static final String iccProfilePath = "sRGB_IEC61966-2-1_black_scaled.icc";
 
-
   public byte[] renderReport(byte[] jasperTemplate, byte[] xML, InputStream logo)
       throws Exception {
     JasperDesign jasperDesign = JRXmlLoader.load(new ByteArrayInputStream(jasperTemplate));
     JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
 
+    return renderReport(jasperReport, xML, logo);
+  }
+
+
+  public byte[] renderReport(JasperReport jasperReport, byte[] xML, InputStream logo)
+      throws Exception {
     if (jasperReport == null) {
       throw new RuntimeException("jasperReport cannot be rendered!");
     }
@@ -72,8 +77,8 @@ public class BaseRenderer {
     configuration.setTagLanguage(reportLanguage);
     configuration.setMetadataAuthor(reportAuthor);
 
-    configuration.setMetadataSubject(reportSubject);
-    configuration.setMetadataTitle(reportTitle);
+    //configuration.setMetadataSubject(reportSubject);
+    //configuration.setMetadataTitle(reportTitle);
 
     // Include structure tags for PDF/A-1a compliance; unnecessary for PDF/A-1b
     configuration.setTagged(true);
