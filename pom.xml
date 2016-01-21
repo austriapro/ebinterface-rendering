@@ -22,6 +22,7 @@
         <commons-io-version>2.4</commons-io-version>
         <junit-version>4.12</junit-version>
         <gettext-commons-version>0.9.8</gettext-commons-version>
+        <saxon-he-version>9.5.1-6</saxon-he-version>
 
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -56,7 +57,7 @@
         <dependency>
             <groupId>net.sf.saxon</groupId>
             <artifactId>Saxon-HE</artifactId>
-            <version>9.5.1-6</version>
+            <version>${saxon-he-version}</version>
         </dependency>
 
         <dependency>
@@ -75,7 +76,7 @@
         <dependency>
             <groupId>com.googlecode.gettext-commons</groupId>
             <artifactId>gettext-commons</artifactId>
-            <version>0.9.8</version>
+            <version>${gettext-commons-version}</version>
         </dependency>
 
         <!--Test dependencies-->
