@@ -30,7 +30,7 @@ public class Translator {
    */
   public static String translate(String key, Locale locale) {
     if (StringUtils.isEmpty(key)) {
-      throw new IllegalArgumentException("Unable to proceed with empty key (with locale arg).");
+      return "";
     }
 
     if (locale == null) {
