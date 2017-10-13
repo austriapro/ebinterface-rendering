@@ -14,7 +14,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <logback-version>1.0.13</logback-version>
-        <jasperreports-version>6.1.0</jasperreports-version>
+        <jasperreports-version>6.2.0</jasperreports-version>
         <jasperreports-fonts-version>6.0.0</jasperreports-fonts-version>
         <xalan-version>2.7.2</xalan-version>
         <pdfbox-version>1.8.8</pdfbox-version>
@@ -23,6 +23,8 @@
         <junit-version>4.12</junit-version>
         <gettext-commons-version>0.9.8</gettext-commons-version>
         <saxon-he-version>9.5.1-6</saxon-he-version>
+        <barcode4j-version>2.1</barcode4j-version>
+        <batik-bridge-version>1.6-1</batik-bridge-version>
 
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -77,6 +79,18 @@
             <groupId>com.googlecode.gettext-commons</groupId>
             <artifactId>gettext-commons</artifactId>
             <version>${gettext-commons-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>net.sf.barcode4j</groupId>
+            <artifactId>barcode4j</artifactId>
+            <version>${barcode4j-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>batik</groupId>
+            <artifactId>batik-bridge</artifactId>
+            <version>${batik-bridge-version}</version>
         </dependency>
 
         <!--Test dependencies-->
