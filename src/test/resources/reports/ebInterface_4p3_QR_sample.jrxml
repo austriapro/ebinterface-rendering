@@ -904,7 +904,7 @@
 		</band>
 	</detail>
 	<pageFooter>
-		<band height="136" splitType="Stretch">
+		<band height="98" splitType="Stretch">
 			<textField>
 				<reportElement positionType="Float" x="260" y="80" width="180" height="12" uuid="b17bd2fe-9e41-469a-9368-522aa5285c81">
 					<property name="local_mesure_unitheight" value="pixel"/>
@@ -956,13 +956,13 @@ $F{beneficiaryaccount.PaymentReference}+
 				<text><![CDATA[Zahlen mit Code]]></text>
 			</staticText>
 			<textField>
-				<reportElement positionType="FixRelativeToBottom" x="220" y="9" width="164" height="68" forecolor="#000000" uuid="badd6521-bd68-4023-8db0-b8d3058a8b2f"/>
+				<reportElement positionType="FixRelativeToBottom" x="200" y="9" width="184" height="68" forecolor="#000000" uuid="badd6521-bd68-4023-8db0-b8d3058a8b2f"/>
 				<box>
 					<pen lineColor="#969696"/>
 				</box>
 				<textElement>
 					<font fontName="DejaVu Sans" size="7"/>
-					<paragraph tabStopWidth="65"/>
+					<paragraph tabStopWidth="75"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Überweisung an:\n"+
 "Kontoinhaber:\t"+$F{beneficiaryaccount.name}+"\n"+
