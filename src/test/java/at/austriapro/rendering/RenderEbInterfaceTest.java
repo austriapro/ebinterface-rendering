@@ -29,12 +29,12 @@ public class RenderEbInterfaceTest {
 
     InputStream isReport =
         RenderEbInterfaceTest.class.getClassLoader()
-            .getResourceAsStream("reports/ebInterface_sample.jrxml");
+            .getResourceAsStream("reports/ebInterface_4p3_QR_sample.jrxml");
 
     InputStream
         isXML =
         RenderEbInterfaceTest.class.getClassLoader()
-            .getResourceAsStream("xml/ebInterface_4p1_demo.xml");
+            .getResourceAsStream("xml/ebInterface_4p3_sample.xml");
 
     InputStream
         logo =

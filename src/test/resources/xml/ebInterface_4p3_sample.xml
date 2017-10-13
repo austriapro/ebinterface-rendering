@@ -287,19 +287,11 @@
 		<Comment>Zahlbar per Überweisung. Bitte SEPA Voraussetzungen berücksichtigen.</Comment>
 		<UniversalBankTransaction n1:ConsolidatorPayable="true">
 			<BeneficiaryAccount>
-				<BankName>Sparkasse Freistadt</BankName>
-				<BankCode n1:BankCodeType="AT">34394939</BankCode>
-				<BIC>ARKEKEKE</BIC>
-				<BankAccountNr>asdfasf</BankAccountNr>
-				<IBAN>23424234</IBAN>
-				<BankAccountOwner>Geor Han</BankAccountOwner>
-			</BeneficiaryAccount>
-			<BeneficiaryAccount>
-				<BankName>Sparkasse Radstadt</BankName>
-				<BankCode n1:BankCodeType="DE">234234</BankCode>
-				<BIC>ARKEKEKE</BIC>
-				<BankAccountNr>ertert3334</BankAccountNr>
-				<IBAN>345345dh</IBAN>
+				<BankName>Erste Bank</BankName>
+				<BankCode n1:BankCodeType="DE">20123</BankCode>
+				<BIC>ABCDATWW</BIC>
+				<BankAccountNr>203256332</BankAccountNr>
+				<IBAN>AT611904300234573201</IBAN>
 				<BankAccountOwner>Geor Han</BankAccountOwner>
 			</BeneficiaryAccount>
 			<PaymentReference>234334</PaymentReference>
