@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.2.2.final using JasperReports Library version 6.2.2  -->
-<!-- 2018-12-10T16:58:53 -->
+<!-- 2018-12-20T14:52:54 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ERPEL_STR_INVOICE_TYPE_2" pageWidth="595" pageHeight="852" whenNoDataType="AllSectionsNoDetail" columnWidth="483" leftMargin="56" rightMargin="56" topMargin="85" bottomMargin="26" isSummaryWithPageHeaderAndFooter="true" uuid="4eedbb89-b4f6-4469-9ab6-f642a1688cf7">
 	<property name="template.engine" value="tabular_template"/>
 	<property name="com.jaspersoft.studio.unit.topMargin" value="cm"/>
@@ -773,15 +773,15 @@
 					<imageExpression><![CDATA[$P{senderLogo}]]></imageExpression>
 				</image>
 				<staticText>
-					<reportElement style="Title" x="0" y="71" width="159" height="33" uuid="b5b3486f-72e9-4ff9-b541-d98e41286371">
+					<reportElement style="Title" x="0" y="71" width="180" height="33" uuid="b5b3486f-72e9-4ff9-b541-d98e41286371">
 						<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 					</reportElement>
 					<box rightPadding="4"/>
 					<textElement textAlignment="Left" verticalAlignment="Top">
-						<font size="24"/>
+						<font size="20"/>
 					</textElement>
-					<text><![CDATA[Rechnung]]></text>
+					<text><![CDATA[Rechnungskopie]]></text>
 				</staticText>
 			</frame>
 			<frame>
