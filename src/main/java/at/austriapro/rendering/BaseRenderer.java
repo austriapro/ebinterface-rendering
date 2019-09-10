@@ -1,5 +1,12 @@
 package at.austriapro.rendering;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
+
 import net.sf.jasperreports.engine.JRParameter;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -14,12 +21,6 @@ import net.sf.jasperreports.export.SimpleExporterInput;
 import net.sf.jasperreports.export.SimpleOutputStreamExporterOutput;
 import net.sf.jasperreports.export.SimplePdfExporterConfiguration;
 import net.sf.jasperreports.export.type.PdfaConformanceEnum;
-
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
-import java.util.HashMap;
-import java.util.Locale;
 
 /**
  * Created by Paul on 29.10.2015.
@@ -53,7 +54,7 @@ public class BaseRenderer {
       throw new RuntimeException("jasperReport cannot be rendered!");
     }
 
-    HashMap<String, Object> parameters = new HashMap<String, Object>();
+    final Map<String, Object> parameters = new HashMap<>();
 
     //Set report locale
     parameters.put(JRParameter.REPORT_LOCALE, reportLocale);
@@ -90,13 +91,13 @@ public class BaseRenderer {
 
     exporter.setConfiguration(configuration);
 
-    ByteArrayOutputStream bOut = new ByteArrayOutputStream();
-    exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(bOut));
-    exporter.exportReport();
-
-    byte[] pdfA1A = bOut.toByteArray();
-
-    return pdfA1A;
+    try (final ByteArrayOutputStream bOut = new ByteArrayOutputStream()) {
+      exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(bOut));
+      exporter.exportReport();
+  
+      final byte[] pdfA1A = bOut.toByteArray();
+      return pdfA1A;
+    }  
   }
 
   public String getReportSubject() {
