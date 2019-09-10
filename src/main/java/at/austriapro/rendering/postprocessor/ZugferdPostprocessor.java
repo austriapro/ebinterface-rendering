@@ -73,7 +73,7 @@ public class ZugferdPostprocessor {
           xpath.compile("/*:CrossIndustryDocument/*:HeaderExchangedDocument/*:ID");
     } catch (XPathExpressionException e) {
       throw new RuntimeException(
-          "Unable to compile XPath expression for determining the type of ZUGFeRD or number of ZUGFeRD document");
+          "Unable to compile XPath expression for determining the type of ZUGFeRD or number of ZUGFeRD document", e);
     }
   }
 
