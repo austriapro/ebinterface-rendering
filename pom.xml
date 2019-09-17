@@ -2,36 +2,34 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.helger</groupId>
+    <artifactId>parent-pom</artifactId>
+    <version>1.10.9</version>
+  </parent>
+  <groupId>at.austriapro</groupId>
+  <artifactId>ebinterface-rendering</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
 
-    <groupId>at.austriapro</groupId>
-    <artifactId>ebinterface-rendering</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+  <properties>
+    <env>local</env>
 
-    <properties>
-        <env>local</env>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
-        <logback-version>1.2.3</logback-version>
-        <!-- Later versions don't work;
-          ClassNotFoundException: org.apache.batik.bridge.FontFamilyResolver  -->
-        <jasperreports-version>6.2.0</jasperreports-version>
-        <jasperreports-fonts-version>6.0.0</jasperreports-fonts-version>
-        <xalan-version>2.7.2</xalan-version>
-        <pdfbox-version>1.8.16</pdfbox-version>
-        <xmpcore-version>5.1.3</xmpcore-version>
-        <commons-io-version>2.6</commons-io-version>
-        <junit-version>4.12</junit-version>
-        <gettext-commons-version>0.9.8</gettext-commons-version>
-        <!-- Does not work with 9.6 or higher -->
-        <saxon-he-version>9.5.1-6</saxon-he-version>
-        <barcode4j-version>2.1</barcode4j-version>
-        <batik-bridge-version>1.6-1</batik-bridge-version>
-
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-    </properties>
+    <logback-version>1.2.3</logback-version>
+    <!-- Later versions don't work;
+      ClassNotFoundException: org.apache.batik.bridge.FontFamilyResolver  -->
+    <jasperreports-version>6.2.0</jasperreports-version>
+    <jasperreports-fonts-version>6.0.0</jasperreports-fonts-version>
+    <xalan-version>2.7.2</xalan-version>
+    <pdfbox-version>1.8.16</pdfbox-version>
+    <xmpcore-version>5.1.3</xmpcore-version>
+    <commons-io-version>2.6</commons-io-version>
+    <gettext-commons-version>0.9.8</gettext-commons-version>
+    <!-- Does not work with 9.6 or higher -->
+    <saxon-he-version>9.5.1-6</saxon-he-version>
+    <barcode4j-version>2.1</barcode4j-version>
+    <batik-bridge-version>1.6-1</batik-bridge-version>
+  </properties>
 
     <dependencies>
         <dependency>
@@ -107,7 +105,6 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>${junit-version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
