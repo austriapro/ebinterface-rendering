@@ -39,16 +39,16 @@ public class BaseRenderer {
 
   private static final String iccProfilePath = "sRGB_IEC61966-2-1_black_scaled.icc";
 
-  public byte[] renderReport(byte[] jasperTemplate, byte[] xML, InputStream logo)
+  public byte[] renderReport(final byte[] jasperTemplate, final byte[] xML, final InputStream logo)
       throws Exception {
-    JasperDesign jasperDesign = JRXmlLoader.load(new ByteArrayInputStream(jasperTemplate));
-    JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
+    final JasperDesign jasperDesign = JRXmlLoader.load(new ByteArrayInputStream(jasperTemplate));
+    final JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
 
     return renderReport(jasperReport, xML, logo);
   }
 
 
-  public byte[] renderReport(JasperReport jasperReport, byte[] xML, InputStream logo)
+  public byte[] renderReport(final JasperReport jasperReport, final byte[] xML, final InputStream logo)
       throws Exception {
     if (jasperReport == null) {
       throw new RuntimeException("jasperReport cannot be rendered!");
@@ -65,15 +65,15 @@ public class BaseRenderer {
     parameters.put(JRXPathQueryExecuterFactory.XML_LOCALE, this.xmlLocale);
     parameters.put("senderLogo", logo);
 
-    JasperPrint jasperPrint = JasperFillManager.fillReport(
+    final JasperPrint jasperPrint = JasperFillManager.fillReport(
         jasperReport,
         parameters
     );
 
-    JRPdfExporter exporter = new JRPdfExporter();
+    final JRPdfExporter exporter = new JRPdfExporter();
     exporter.setExporterInput(new SimpleExporterInput(jasperPrint));
 
-    SimplePdfExporterConfiguration configuration = new SimplePdfExporterConfiguration();
+    final SimplePdfExporterConfiguration configuration = new SimplePdfExporterConfiguration();
 
     configuration.setTagLanguage(reportLanguage);
     configuration.setMetadataAuthor(reportAuthor);
@@ -94,17 +94,17 @@ public class BaseRenderer {
     try (final ByteArrayOutputStream bOut = new ByteArrayOutputStream()) {
       exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(bOut));
       exporter.exportReport();
-  
+
       final byte[] pdfA1A = bOut.toByteArray();
       return pdfA1A;
-    }  
+    }
   }
 
   public String getReportSubject() {
     return reportSubject;
   }
 
-  public void setReportSubject(String reportSubject) {
+  public void setReportSubject(final String reportSubject) {
     this.reportSubject = reportSubject;
   }
 
@@ -112,7 +112,7 @@ public class BaseRenderer {
     return xmlDatePattern;
   }
 
-  public void setXmlDatePattern(String xmlDatePattern) {
+  public void setXmlDatePattern(final String xmlDatePattern) {
     this.xmlDatePattern = xmlDatePattern;
   }
 
@@ -120,7 +120,7 @@ public class BaseRenderer {
     return xmlNumberPattern;
   }
 
-  public void setXmlNumberPattern(String xmlNumberPattern) {
+  public void setXmlNumberPattern(final String xmlNumberPattern) {
     this.xmlNumberPattern = xmlNumberPattern;
   }
 
@@ -128,7 +128,7 @@ public class BaseRenderer {
     return xmlLocale;
   }
 
-  public void setXmlLocale(Locale xmlLocale) {
+  public void setXmlLocale(final Locale xmlLocale) {
     this.xmlLocale = xmlLocale;
   }
 
@@ -136,7 +136,7 @@ public class BaseRenderer {
     return reportLocale;
   }
 
-  public void setReportLocale(Locale reportLocale) {
+  public void setReportLocale(final Locale reportLocale) {
     this.reportLocale = reportLocale;
   }
 
@@ -144,7 +144,7 @@ public class BaseRenderer {
     return reportLanguage;
   }
 
-  public void setReportLanguage(String reportLanguage) {
+  public void setReportLanguage(final String reportLanguage) {
     this.reportLanguage = reportLanguage;
   }
 
@@ -152,7 +152,7 @@ public class BaseRenderer {
     return reportTitle;
   }
 
-  public void setReportTitle(String reportTitle) {
+  public void setReportTitle(final String reportTitle) {
     this.reportTitle = reportTitle;
   }
 
@@ -160,7 +160,7 @@ public class BaseRenderer {
     return reportAuthor;
   }
 
-  public void setReportAuthor(String reportAuthor) {
+  public void setReportAuthor(final String reportAuthor) {
     this.reportAuthor = reportAuthor;
   }
 }

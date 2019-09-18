@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>com.helger</groupId>
@@ -32,7 +33,7 @@
     <logback-version>1.2.3</logback-version>
     <!-- Later versions don't work;
       ClassNotFoundException: org.apache.batik.bridge.FontFamilyResolver  -->
-    <jasperreports-version>6.2.0</jasperreports-version>
+    <jasperreports-version>6.3.0</jasperreports-version>
     <jasperreports-fonts-version>6.0.0</jasperreports-fonts-version>
     <xalan-version>2.7.2</xalan-version>
     <pdfbox-version>1.8.16</pdfbox-version>
@@ -42,9 +43,9 @@
     <!-- Does not work with 9.6 or higher -->
     <saxon-he-version>9.9.1-5</saxon-he-version>
     <barcode4j-version>2.1</barcode4j-version>
-    <batik-bridge-version>1.6-1</batik-bridge-version>
+    <batik-bridge-version>1.11</batik-bridge-version>
   </properties>
-  
+
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -57,43 +58,36 @@
     </dependencies>
   </dependencyManagement>
 
-    <dependencies>
-        <dependency>
-            <groupId>net.sf.jasperreports</groupId>
-            <artifactId>jasperreports</artifactId>
-            <version>${jasperreports-version}</version>
-        </dependency>
+  <dependencies>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+    </dependency>
+    
+    <dependency>
+      <groupId>net.sf.jasperreports</groupId>
+      <artifactId>jasperreports</artifactId>
+      <version>${jasperreports-version}</version>
+    </dependency>
 
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>${logback-version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>net.sf.jasperreports</groupId>
-            <artifactId>jasperreports-fonts</artifactId>
-            <version>${jasperreports-fonts-version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>xalan</groupId>
-            <artifactId>xalan</artifactId>
-            <version>${xalan-version}</version>
-        </dependency>
+    <dependency>
+      <groupId>net.sf.jasperreports</groupId>
+      <artifactId>jasperreports-fonts</artifactId>
+      <version>${jasperreports-fonts-version}</version>
+    </dependency>
 
         <!-- Saxon XSLT processing for Java -->
-        <dependency>
-            <groupId>net.sf.saxon</groupId>
-            <artifactId>Saxon-HE</artifactId>
-            <version>${saxon-he-version}</version>
-        </dependency>
+    <dependency>
+      <groupId>net.sf.saxon</groupId>
+      <artifactId>Saxon-HE</artifactId>
+      <version>${saxon-he-version}</version>
+    </dependency>
 
-        <dependency>
-            <groupId>org.apache.pdfbox</groupId>
-            <artifactId>pdfbox</artifactId>
-            <version>${pdfbox-version}</version>
-        </dependency>
+    <dependency>
+      <groupId>org.apache.pdfbox</groupId>
+      <artifactId>pdfbox</artifactId>
+      <version>${pdfbox-version}</version>
+    </dependency>
         <!-- for PDFBox 2.x
         <dependency>
             <groupId>org.apache.pdfbox</groupId>
@@ -102,42 +96,48 @@
         </dependency>
          -->
 
-        <dependency>
-            <groupId>com.adobe.xmp</groupId>
-            <artifactId>xmpcore</artifactId>
-            <version>${xmpcore-version}</version>
-        </dependency>
+    <dependency>
+      <groupId>com.adobe.xmp</groupId>
+      <artifactId>xmpcore</artifactId>
+      <version>${xmpcore-version}</version>
+    </dependency>
 
         <!-- java i18n http://code.google.com/p/gettext-commons/ -->
-        <dependency>
-            <groupId>com.googlecode.gettext-commons</groupId>
-            <artifactId>gettext-commons</artifactId>
-            <version>${gettext-commons-version}</version>
-        </dependency>
+    <dependency>
+      <groupId>com.googlecode.gettext-commons</groupId>
+      <artifactId>gettext-commons</artifactId>
+      <version>${gettext-commons-version}</version>
+    </dependency>
 
-        <dependency>
-            <groupId>net.sf.barcode4j</groupId>
-            <artifactId>barcode4j</artifactId>
-            <version>${barcode4j-version}</version>
-        </dependency>
+    <dependency>
+      <groupId>net.sf.barcode4j</groupId>
+      <artifactId>barcode4j</artifactId>
+      <version>${barcode4j-version}</version>
+    </dependency>
 
-        <dependency>
-            <groupId>batik</groupId>
-            <artifactId>batik-bridge</artifactId>
-            <version>${batik-bridge-version}</version>
-        </dependency>
+    <dependency>
+      <groupId>org.apache.xmlgraphics</groupId>
+      <artifactId>batik-bridge</artifactId>
+      <version>${batik-bridge-version}</version>
+    </dependency>
 
-        <!--Test dependencies-->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
-        </dependency>
+    <!--Test dependencies-->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
 
-        <dependency>
-            <groupId>com.helger</groupId>
-            <artifactId>ph-commons</artifactId>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-simple</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>com.helger</groupId>
+      <artifactId>ph-commons</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
 </project>
