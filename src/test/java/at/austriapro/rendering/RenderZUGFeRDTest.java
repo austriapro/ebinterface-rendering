@@ -1,13 +1,14 @@
 package at.austriapro.rendering;
 
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
+import java.io.File;
+import java.io.InputStream;
+
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.File;
-import java.io.InputStream;
+import com.helger.commons.io.file.SimpleFileIO;
+import com.helger.commons.io.stream.StreamHelper;
 
 import at.austriapro.rendering.util.RenderUtil;
 
@@ -16,32 +17,32 @@ import at.austriapro.rendering.util.RenderUtil;
  */
 public class RenderZUGFeRDTest {
 
-  private static boolean OPENFILES = true;
+  private static final boolean OPENFILES = true;
 
   private static final Logger LOG = LoggerFactory.getLogger(RenderZUGFeRDTest.class.getName());
 
   @Test
   public void testJasperRenderer() throws Exception {
-    ZugferdRenderer zRenderer = new ZugferdRenderer();
+    final ZugferdRenderer zRenderer = new ZugferdRenderer();
 
-    InputStream isReport =
+    final InputStream isReport =
         RenderZUGFeRDTest.class.getClassLoader()
             .getResourceAsStream("reports/zugferd_sample.jrxml");
 
-    InputStream
+    final InputStream
         isXML =
         RenderZUGFeRDTest.class.getClassLoader().getResourceAsStream("xml/zugferd_demo.xml");
 
-    InputStream
+    final InputStream
         logo =
         RenderZUGFeRDTest.class.getClassLoader().getResourceAsStream("logos/logo.jpg");
 
-    byte[]
+    final byte[]
         zugferdPdf =
-        zRenderer.renderReport(IOUtils.toByteArray(isReport), IOUtils.toByteArray(isXML), logo);
+        zRenderer.renderReport(StreamHelper.getAllBytes(isReport), StreamHelper.getAllBytes(isXML), logo);
 
-    File file = File.createTempFile("zugferd", ".pdf");
-    FileUtils.writeByteArrayToFile(file, zugferdPdf);
+    final File file = File.createTempFile("zugferd", ".pdf");
+    SimpleFileIO.writeFile (file, zugferdPdf);
 
     LOG.info("File written to " + file.getAbsolutePath());
 
@@ -49,7 +50,7 @@ public class RenderZUGFeRDTest {
       try {
         RenderUtil.openFile(file);
 
-      } catch (Exception e) {
+      } catch (final Exception e) {
         LOG.error(e.getMessage(), e);
       }
     }

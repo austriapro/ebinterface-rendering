@@ -1,18 +1,14 @@
 package at.austriapro.rendering;
 
-import net.sf.jasperreports.engine.JasperReport;
-
 import java.io.InputStream;
 
 import at.austriapro.rendering.postprocessor.ZugferdPostprocessor;
+import net.sf.jasperreports.engine.JasperReport;
 
 /**
  * Created by Paul on 29.10.2015.
  */
 public class ZugferdRenderer extends BaseRenderer {
-
-  private static final String iccProfilePath = "sRGB_IEC61966-2-1_black_scaled.icc";
-
   public ZugferdRenderer() {
     super();
     reportTitle = "ZUGFeRD";
@@ -20,23 +16,23 @@ public class ZugferdRenderer extends BaseRenderer {
   }
 
   @Override
-  public byte[] renderReport(byte[] jasperTemplate, byte[] zugferdXML, InputStream logo)
+  public byte[] renderReport(final byte[] jasperTemplate, final byte[] zugferdXML, final InputStream logo)
       throws Exception {
-    byte[] pdfA1A = super.renderReport(jasperTemplate, zugferdXML, logo);
+    final byte[] pdfA1A = super.renderReport(jasperTemplate, zugferdXML, logo);
 
-    ZugferdPostprocessor zProcessor = new ZugferdPostprocessor();
-    byte[] pdfA3A = zProcessor.embedXMLtoPDF(pdfA1A, zugferdXML);
+    final ZugferdPostprocessor zProcessor = new ZugferdPostprocessor();
+    final byte[] pdfA3A = zProcessor.embedXMLtoPDF(pdfA1A, zugferdXML);
 
     return pdfA3A;
   }
 
   @Override
-  public byte[] renderReport(JasperReport jasperReport, byte[] zugferdXML, InputStream logo)
+  public byte[] renderReport(final JasperReport jasperReport, final byte[] zugferdXML, final InputStream logo)
       throws Exception {
-    byte[] pdfA1A = super.renderReport(jasperReport, zugferdXML, logo);
+    final byte[] pdfA1A = super.renderReport(jasperReport, zugferdXML, logo);
 
-    ZugferdPostprocessor zProcessor = new ZugferdPostprocessor();
-    byte[] pdfA3A = zProcessor.embedXMLtoPDF(pdfA1A, zugferdXML);
+    final ZugferdPostprocessor zProcessor = new ZugferdPostprocessor();
+    final byte[] pdfA3A = zProcessor.embedXMLtoPDF(pdfA1A, zugferdXML);
 
     return pdfA3A;
   }

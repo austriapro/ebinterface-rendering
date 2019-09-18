@@ -1,14 +1,15 @@
 package at.austriapro.rendering;
 
 
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
+import java.io.File;
+import java.io.InputStream;
+
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.File;
-import java.io.InputStream;
+import com.helger.commons.io.file.SimpleFileIO;
+import com.helger.commons.io.stream.StreamHelper;
 
 import at.austriapro.rendering.util.RenderUtil;
 
@@ -25,27 +26,27 @@ public class RenderEbInterfaceTest {
 
   @Test
   public void testJasperRenderer() throws Exception {
-    BaseRenderer renderer = new BaseRenderer();
+    final BaseRenderer renderer = new BaseRenderer();
 
-    InputStream isReport =
+    final InputStream isReport =
         RenderEbInterfaceTest.class.getClassLoader()
             .getResourceAsStream("reports/ebInterface_5p0_QR_sample.jrxml");
 
-    InputStream
+    final InputStream
         isXML =
         RenderEbInterfaceTest.class.getClassLoader()
             .getResourceAsStream("xml/ebinterface_5p0_sample.xml");
 
-    InputStream
+    final InputStream
         logo =
         RenderEbInterfaceTest.class.getClassLoader().getResourceAsStream("logos/logo.jpg");
 
-    byte[]
+    final byte[]
         renderedPdf =
-        renderer.renderReport(IOUtils.toByteArray(isReport), IOUtils.toByteArray(isXML), logo);
+        renderer.renderReport(StreamHelper.getAllBytes(isReport), StreamHelper.getAllBytes(isXML), logo);
 
-    File file = File.createTempFile("ebInterface", ".pdf");
-    FileUtils.writeByteArrayToFile(file, renderedPdf);
+    final File file = File.createTempFile("ebInterface", ".pdf");
+    SimpleFileIO.writeFile (file, renderedPdf);
 
     LOG.info("File written to " + file.getAbsolutePath());
 
@@ -53,7 +54,7 @@ public class RenderEbInterfaceTest {
       try {
         RenderUtil.openFile(file);
 
-      } catch (Exception e) {
+      } catch (final Exception e) {
         LOG.error(e.getMessage(), e);
       }
     }

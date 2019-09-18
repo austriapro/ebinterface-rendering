@@ -1,13 +1,13 @@
 package at.austriapro.rendering;
 
 
+import java.util.Locale;
+
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;
-
-import java.util.Locale;
 
 
 /**
@@ -15,7 +15,7 @@ import java.util.Locale;
  */
 public class Translator {
 
-  private static Logger LOG = LoggerFactory.getLogger(Translator.class);
+  private static final Logger LOG = LoggerFactory.getLogger(Translator.class);
 
   private static final I18n i18n;
 
@@ -28,7 +28,7 @@ public class Translator {
    * found in the properties file, the I18n returns the key again - in this case log an error, but
    * continue with the key-value as translation
    */
-  public static String translate(String key, Locale locale) {
+  public static String translate(final String key, final Locale locale) {
     if (StringUtils.isEmpty(key)) {
       return "";
     }
@@ -40,7 +40,7 @@ public class Translator {
     i18n.setLocale(locale);
 
     String translation;
-    String transKey = key.toUpperCase();
+    final String transKey = key.toUpperCase();
 
     LOG.debug("Translating key " + transKey);
     translation = i18n.tr(transKey);
