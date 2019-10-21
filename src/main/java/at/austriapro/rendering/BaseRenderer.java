@@ -82,7 +82,7 @@ public class BaseRenderer {
     //configuration.setMetadataTitle(reportTitle);
 
     // Include structure tags for PDF/A-1a compliance; unnecessary for PDF/A-1b
-    configuration.setTagged(true);
+    configuration.setTagged(Boolean.TRUE);
 
     configuration.setPdfaConformance(PdfaConformanceEnum.PDFA_1A);
 

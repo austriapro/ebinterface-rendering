@@ -12,8 +12,10 @@ public class XMPSchemaZugferd extends XMPSchemaBasic {
   /**
    * This is what needs to be added to the RDF metadata - basically the name of the embedded Zugferd
    * file
+   * @param parent parent metadata
+   * @param conformanceLevel conformance level
    */
-  public XMPSchemaZugferd(org.apache.jempbox.xmp.XMPMetadata parent, String conformanceLevel) {
+  public XMPSchemaZugferd(final org.apache.jempbox.xmp.XMPMetadata parent, final String conformanceLevel) {
     super(parent);
 
     if (conformanceLevel != null) {
@@ -41,7 +43,7 @@ public class XMPSchemaZugferd extends XMPSchemaBasic {
 
     textNode = schema.getOwnerDocument().createElement(
         "zf:ConformanceLevel"); //$NON-NLS-1$
-    XMLUtil.setStringValue(textNode, this.conformanceLevel); //$NON-NLS-1$
+    XMLUtil.setStringValue(textNode, this.conformanceLevel);
     schema.appendChild(textNode);
 
   }

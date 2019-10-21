@@ -27,6 +27,9 @@ public class Translator {
    * Translate the given key. In case to translation was not possible (because no key entry could be
    * found in the properties file, the I18n returns the key again - in this case log an error, but
    * continue with the key-value as translation
+   * @param key Key
+   * @param locale Locale to use
+   * @return Never <code>null</code>
    */
   public static String translate(final String key, final Locale locale) {
     if (StringUtils.isEmpty(key)) {
