@@ -42,7 +42,7 @@
     <!-- Does not work with 9.6 or higher -->
     <saxon-he-version>9.9.1-5</saxon-he-version>
     <barcode4j-version>2.1</barcode4j-version>
-    <batik-bridge-version>1.11</batik-bridge-version>
+    <batik-bridge-version>1.12</batik-bridge-version>
   </properties>
 
   <dependencyManagement>
