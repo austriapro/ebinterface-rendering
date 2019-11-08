@@ -4,7 +4,7 @@
   <parent>
     <groupId>com.helger</groupId>
     <artifactId>parent-pom</artifactId>
-    <version>1.10.9</version>
+    <version>1.11.0</version>
   </parent>
   <groupId>at.austriapro</groupId>
   <artifactId>ebinterface-rendering</artifactId>
@@ -37,7 +37,7 @@
     <jasperreports-fonts-version>6.0.0</jasperreports-fonts-version>
     <pdfbox-version>1.8.16</pdfbox-version>
     <xmpcore-version>5.1.3</xmpcore-version>
-    <ph-commons-version>9.3.7</ph-commons-version>
+    <ph-commons-version>9.3.8</ph-commons-version>
     <gettext-commons-version>0.9.8</gettext-commons-version>
     <!-- Does not work with 9.6 or higher -->
     <saxon-he-version>9.9.1-5</saxon-he-version>
