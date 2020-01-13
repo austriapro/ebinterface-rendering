@@ -11,3 +11,9 @@ Using [ebInterface Web](https://github.com/austriapro/ebinterface-web) a user ma
 For this project the Google code style is used. Please [download the code style file](https://code.google.com/p/google-styleguide/source/browse/trunk/intellij-java-google-style.xml) and set it in your IDE, before you commit to the repository. 
 
 :green_heart: Pull requests are greatly appreciated and welcomed.
+
+---
+
+My personal [Coding Styleguide](https://github.com/phax/meta/blob/master/CodingStyleguide.md) |
+On Twitter: <a href="https://twitter.com/philiphelger">@philiphelger</a> |
+Kindly supported by [YourKit Java Profiler](https://www.yourkit.com)
