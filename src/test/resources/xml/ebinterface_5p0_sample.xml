@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    The MIT License (MIT)
+
+    Copyright (c) 2015-2020 AUSTRIAPRO
+
+-->
 <Invoice xmlns="http://www.ebinterface.at/schema/5p0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" GeneratingSystem="ecosio GmbH" DocumentType="Invoice" InvoiceCurrency="EUR" DocumentTitle="Testrechnung ecosio" Language="ger" xsi:schemaLocation="http://www.ebinterface.at/schema/5p0/ ../Invoice.xsd">
 	<InvoiceNumber>RNR 4712</InvoiceNumber>
 	<InvoiceDate>2018-01-12</InvoiceDate>

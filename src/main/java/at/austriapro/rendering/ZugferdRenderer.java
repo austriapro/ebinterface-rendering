@@ -1,3 +1,8 @@
+/**
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2015-2020 AUSTRIAPRO
+ */
 package at.austriapro.rendering;
 
 import java.io.InputStream;

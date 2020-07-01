@@ -1,3 +1,10 @@
+<!--
+
+    The MIT License (MIT)
+
+    Copyright (c) 2015-2020 AUSTRIAPRO
+
+-->
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ns3:CrossIndustryDocument xmlns:ns2="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:12" xmlns="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:15" xmlns:ns3="urn:ferd:CrossIndustryDocument:invoice:1p0">
     <ns3:SpecifiedExchangedDocumentContext>

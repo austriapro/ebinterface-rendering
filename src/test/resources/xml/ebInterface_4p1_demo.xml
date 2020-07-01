@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="../Invoice.xslt"?>
+<!--
+
+    The MIT License (MIT)
+
+    Copyright (c) 2015-2020 AUSTRIAPRO
+
+-->
 <Invoice n1:GeneratingSystem="System xyz" n1:DocumentType="Invoice" n1:InvoiceCurrency="EUR"
          n1:ManualProcessing="true" n1:DocumentTitle="Rechnung für Jänner 2014" n1:Language="ger"
          n1:IsDuplicate="true"
