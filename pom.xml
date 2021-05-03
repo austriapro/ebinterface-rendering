@@ -44,9 +44,9 @@
     <jasperreports-fonts-version>6.0.0</jasperreports-fonts-version>
     <pdfbox-version>1.8.16</pdfbox-version>
     <xmpcore-version>5.1.3</xmpcore-version>
-    <ph-commons-version>10.0.0</ph-commons-version>
+    <ph-commons-version>10.1.1</ph-commons-version>
     <gettext-commons-version>0.9.8</gettext-commons-version>
-    <saxon-he-version>10.3</saxon-he-version>
+    <saxon-he-version>10.5</saxon-he-version>
     <barcode4j-version>2.1</barcode4j-version>
     <batik-bridge-version>1.12</batik-bridge-version>
   </properties>
