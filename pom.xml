@@ -3,7 +3,7 @@
 
     The MIT License (MIT)
 
-    Copyright (c) 2015-2021 AUSTRIAPRO
+    Copyright (c) 2015-2022 AUSTRIAPRO
 
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -11,7 +11,7 @@
   <parent>
     <groupId>com.helger</groupId>
     <artifactId>parent-pom</artifactId>
-    <version>1.11.3</version>
+    <version>1.11.4</version>
   </parent>
   <groupId>at.austriapro</groupId>
   <artifactId>ebinterface-rendering</artifactId>
@@ -40,16 +40,32 @@
       net.sf.jasperreports.engine.design.JRValidationException: Report design not valid : 
         1. Unknown reprint group 'ItemGroup' for element.
      -->
-    <jasperreports-version>6.5.1</jasperreports-version>
+    <jasperreports-version>6.6.0</jasperreports-version>
     <jasperreports-fonts-version>6.0.0</jasperreports-fonts-version>
     <pdfbox-version>1.8.16</pdfbox-version>
     <xmpcore-version>5.1.3</xmpcore-version>
-    <ph-commons-version>10.1.1</ph-commons-version>
+    <ph-commons-version>10.1.5</ph-commons-version>
     <gettext-commons-version>0.9.8</gettext-commons-version>
-    <saxon-he-version>10.5</saxon-he-version>
+    <saxon-he-version>10.6</saxon-he-version>
     <barcode4j-version>2.1</barcode4j-version>
     <batik-bridge-version>1.12</batik-bridge-version>
   </properties>
+
+  <repositories>
+    <repository>
+      <id>jaspersoft-third-party</id>
+      <url>http://jaspersoft.jfrog.io/jaspersoft/third-party-ce-artifacts/</url>
+    </repository>
+    <repository>
+      <id>jr-ce-releases</id>
+      <name>JasperReports CE Releases</name>
+      <url>http://jaspersoft.jfrog.io/jaspersoft/jr-ce-releases</url>
+    </repository>
+    <repository>
+      <id>jr-snapshots</id>
+      <url>http://jaspersoft.jfrog.io/jaspersoft/jr-ce-snapshots/</url>
+    </repository>
+  </repositories>
 
   <dependencyManagement>
     <dependencies>

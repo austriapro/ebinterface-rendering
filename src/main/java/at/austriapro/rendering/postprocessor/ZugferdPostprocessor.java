@@ -1,7 +1,7 @@
-/**
+/*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015-2021 AUSTRIAPRO
+ * Copyright (c) 2015-2022 AUSTRIAPRO
  */
 package at.austriapro.rendering.postprocessor;
 
