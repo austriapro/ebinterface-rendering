@@ -40,7 +40,7 @@
       net.sf.jasperreports.engine.design.JRValidationException: Report design not valid : 
         1. Unknown reprint group 'ItemGroup' for element.
      -->
-    <jasperreports-version>6.6.0</jasperreports-version>
+    <jasperreports-version>6.5.1</jasperreports-version>
     <jasperreports-fonts-version>6.0.0</jasperreports-fonts-version>
     <pdfbox-version>1.8.16</pdfbox-version>
     <xmpcore-version>5.1.3</xmpcore-version>
@@ -54,16 +54,21 @@
   <repositories>
     <repository>
       <id>jaspersoft-third-party</id>
-      <url>http://jaspersoft.jfrog.io/jaspersoft/third-party-ce-artifacts/</url>
+      <url>https://jaspersoft.jfrog.io/jaspersoft/third-party-ce-artifacts/</url>
     </repository>
     <repository>
       <id>jr-ce-releases</id>
       <name>JasperReports CE Releases</name>
-      <url>http://jaspersoft.jfrog.io/jaspersoft/jr-ce-releases</url>
+      <url>https://jaspersoft.jfrog.io/jaspersoft/jr-ce-releases</url>
     </repository>
     <repository>
       <id>jr-snapshots</id>
-      <url>http://jaspersoft.jfrog.io/jaspersoft/jr-ce-snapshots/</url>
+      <url>https://jaspersoft.jfrog.io/jaspersoft/jr-ce-snapshots/</url>
+    </repository>
+    <!-- Required for iText 2.1.7.js6 -->
+    <repository>
+      <id>ICM</id>
+      <url>https://maven.icm.edu.pl/artifactory/repo/</url>
     </repository>
   </repositories>
 
