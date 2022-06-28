@@ -52,6 +52,7 @@
   </properties>
 
   <repositories>
+    <!-- Required for iText 2.1.7.js6 -->
     <repository>
       <id>jaspersoft-third-party</id>
       <url>https://jaspersoft.jfrog.io/jaspersoft/third-party-ce-artifacts/</url>
@@ -64,11 +65,6 @@
     <repository>
       <id>jr-snapshots</id>
       <url>https://jaspersoft.jfrog.io/jaspersoft/jr-ce-snapshots/</url>
-    </repository>
-    <!-- Required for iText 2.1.7.js6 -->
-    <repository>
-      <id>ICM</id>
-      <url>https://maven.icm.edu.pl/artifactory/repo/</url>
     </repository>
   </repositories>
 
