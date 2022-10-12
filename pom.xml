@@ -103,26 +103,13 @@
       <version>${jasperreports-fonts-version}</version>
     </dependency>
 
-    <!-- Saxon XSLT processing for Java -->
-    <dependency>
-      <groupId>net.sf.saxon</groupId>
-      <artifactId>Saxon-HE</artifactId>
-      <version>${saxon-he-version}</version>
-    </dependency>
-
     <dependency>
       <groupId>org.apache.pdfbox</groupId>
       <artifactId>pdfbox</artifactId>
       <version>${pdfbox-version}</version>
     </dependency>
-    <!-- for PDFBox 2.x
-    <dependency>
-      <groupId>org.apache.pdfbox</groupId>
-      <artifactId>xmpbox</artifactId>
-      <version>${pdfbox-version}</version>
-    </dependency>
-     -->
 
+    <!-- Referenced from within a report -->
     <dependency>
       <groupId>com.adobe.xmp</groupId>
       <artifactId>xmpcore</artifactId>
@@ -136,6 +123,7 @@
       <version>${gettext-commons-version}</version>
     </dependency>
 
+    <!-- Referenced from within a report -->
     <dependency>
       <groupId>net.sf.barcode4j</groupId>
       <artifactId>barcode4j</artifactId>
@@ -148,6 +136,7 @@
       <version>2.7.2</version>
     </dependency>
 
+    <!-- Referenced from within a report -->
     <dependency>
       <groupId>org.apache.xmlgraphics</groupId>
       <artifactId>batik-bridge</artifactId>

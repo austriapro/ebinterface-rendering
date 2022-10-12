@@ -30,7 +30,8 @@ import net.sf.jasperreports.export.type.PdfaConformanceEnum;
 /**
  * Created by Paul on 29.10.2015.
  */
-public class BaseRenderer {
+public class BaseRenderer
+{
 
   protected String xmlDatePattern = "yyyy-MM-dd";
   protected String xmlNumberPattern = "#,###,##0.##";
@@ -44,128 +45,141 @@ public class BaseRenderer {
 
   private static final String iccProfilePath = "sRGB_IEC61966-2-1_black_scaled.icc";
 
-  public byte[] renderReport(final byte[] jasperTemplate, final byte[] xML, final InputStream logo)
-      throws Exception {
-    final JasperDesign jasperDesign = JRXmlLoader.load(new ByteArrayInputStream(jasperTemplate));
-    final JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
+  public byte [] renderReport (final byte [] jasperTemplate, final byte [] xML, final InputStream logo) throws Exception
+  {
+    final JasperDesign jasperDesign = JRXmlLoader.load (new ByteArrayInputStream (jasperTemplate));
+    final JasperReport jasperReport = JasperCompileManager.compileReport (jasperDesign);
 
-    return renderReport(jasperReport, xML, logo);
+    return renderReport (jasperReport, xML, logo);
   }
 
-
-  public byte[] renderReport(final JasperReport jasperReport, final byte[] xML, final InputStream logo)
-      throws Exception {
-    if (jasperReport == null) {
-      throw new RuntimeException("jasperReport cannot be rendered!");
+  public byte [] renderReport (final JasperReport jasperReport, final byte [] xML, final InputStream logo) throws Exception
+  {
+    if (jasperReport == null)
+    {
+      throw new RuntimeException ("jasperReport cannot be rendered!");
     }
 
-    final Map<String, Object> parameters = new HashMap<>();
+    final Map <String, Object> parameters = new HashMap <> ();
 
-    //Set report locale
-    parameters.put(JRParameter.REPORT_LOCALE, reportLocale);
-    parameters.put(JRXPathQueryExecuterFactory.PARAMETER_XML_DATA_DOCUMENT, JRXmlUtils
-        .parse(new ByteArrayInputStream(xML)));
-    parameters.put(JRXPathQueryExecuterFactory.XML_DATE_PATTERN, this.xmlDatePattern);
-    parameters.put(JRXPathQueryExecuterFactory.XML_NUMBER_PATTERN, this.xmlNumberPattern);
-    parameters.put(JRXPathQueryExecuterFactory.XML_LOCALE, this.xmlLocale);
-    parameters.put("senderLogo", logo);
+    // Set report locale
+    parameters.put (JRParameter.REPORT_LOCALE, reportLocale);
+    parameters.put (JRXPathQueryExecuterFactory.PARAMETER_XML_DATA_DOCUMENT, JRXmlUtils.parse (new ByteArrayInputStream (xML)));
+    parameters.put (JRXPathQueryExecuterFactory.XML_DATE_PATTERN, this.xmlDatePattern);
+    parameters.put (JRXPathQueryExecuterFactory.XML_NUMBER_PATTERN, this.xmlNumberPattern);
+    parameters.put (JRXPathQueryExecuterFactory.XML_LOCALE, this.xmlLocale);
+    parameters.put ("senderLogo", logo);
 
-    final JasperPrint jasperPrint = JasperFillManager.fillReport(
-        jasperReport,
-        parameters
-    );
+    final JasperPrint jasperPrint = JasperFillManager.fillReport (jasperReport, parameters);
 
-    final JRPdfExporter exporter = new JRPdfExporter();
-    exporter.setExporterInput(new SimpleExporterInput(jasperPrint));
+    final JRPdfExporter exporter = new JRPdfExporter ();
+    exporter.setExporterInput (new SimpleExporterInput (jasperPrint));
 
-    final SimplePdfExporterConfiguration configuration = new SimplePdfExporterConfiguration();
+    final SimplePdfExporterConfiguration configuration = new SimplePdfExporterConfiguration ();
 
-    configuration.setTagLanguage(reportLanguage);
-    configuration.setMetadataAuthor(reportAuthor);
+    configuration.setTagLanguage (reportLanguage);
+    configuration.setMetadataAuthor (reportAuthor);
 
-    //configuration.setMetadataSubject(reportSubject);
-    //configuration.setMetadataTitle(reportTitle);
+    // configuration.setMetadataSubject(reportSubject);
+    // configuration.setMetadataTitle(reportTitle);
 
     // Include structure tags for PDF/A-1a compliance; unnecessary for PDF/A-1b
-    configuration.setTagged(Boolean.TRUE);
+    configuration.setTagged (Boolean.TRUE);
 
-    configuration.setPdfaConformance(PdfaConformanceEnum.PDFA_1A);
+    configuration.setPdfaConformance (PdfaConformanceEnum.PDFA_1A);
 
-    //Set color Profile
-    configuration.setIccProfilePath(iccProfilePath);
+    // Set color Profile
+    configuration.setIccProfilePath (iccProfilePath);
 
-    exporter.setConfiguration(configuration);
+    exporter.setConfiguration (configuration);
 
-    try (final ByteArrayOutputStream bOut = new ByteArrayOutputStream()) {
-      exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(bOut));
-      exporter.exportReport();
+    try (final ByteArrayOutputStream bOut = new ByteArrayOutputStream ())
+    {
+      exporter.setExporterOutput (new SimpleOutputStreamExporterOutput (bOut));
+      exporter.exportReport ();
 
-      final byte[] pdfA1A = bOut.toByteArray();
+      final byte [] pdfA1A = bOut.toByteArray ();
       return pdfA1A;
     }
   }
 
-  public String getReportSubject() {
+  public String getReportSubject ()
+  {
     return reportSubject;
   }
 
-  public void setReportSubject(final String reportSubject) {
+  public void setReportSubject (final String reportSubject)
+  {
     this.reportSubject = reportSubject;
   }
 
-  public String getXmlDatePattern() {
+  public String getXmlDatePattern ()
+  {
     return xmlDatePattern;
   }
 
-  public void setXmlDatePattern(final String xmlDatePattern) {
+  public void setXmlDatePattern (final String xmlDatePattern)
+  {
     this.xmlDatePattern = xmlDatePattern;
   }
 
-  public String getXmlNumberPattern() {
+  public String getXmlNumberPattern ()
+  {
     return xmlNumberPattern;
   }
 
-  public void setXmlNumberPattern(final String xmlNumberPattern) {
+  public void setXmlNumberPattern (final String xmlNumberPattern)
+  {
     this.xmlNumberPattern = xmlNumberPattern;
   }
 
-  public Locale getXmlLocale() {
+  public Locale getXmlLocale ()
+  {
     return xmlLocale;
   }
 
-  public void setXmlLocale(final Locale xmlLocale) {
+  public void setXmlLocale (final Locale xmlLocale)
+  {
     this.xmlLocale = xmlLocale;
   }
 
-  public Locale getReportLocale() {
+  public Locale getReportLocale ()
+  {
     return reportLocale;
   }
 
-  public void setReportLocale(final Locale reportLocale) {
+  public void setReportLocale (final Locale reportLocale)
+  {
     this.reportLocale = reportLocale;
   }
 
-  public String getReportLanguage() {
+  public String getReportLanguage ()
+  {
     return reportLanguage;
   }
 
-  public void setReportLanguage(final String reportLanguage) {
+  public void setReportLanguage (final String reportLanguage)
+  {
     this.reportLanguage = reportLanguage;
   }
 
-  public String getReportTitle() {
+  public String getReportTitle ()
+  {
     return reportTitle;
   }
 
-  public void setReportTitle(final String reportTitle) {
+  public void setReportTitle (final String reportTitle)
+  {
     this.reportTitle = reportTitle;
   }
 
-  public String getReportAuthor() {
+  public String getReportAuthor ()
+  {
     return reportAuthor;
   }
 
-  public void setReportAuthor(final String reportAuthor) {
+  public void setReportAuthor (final String reportAuthor)
+  {
     this.reportAuthor = reportAuthor;
   }
 }
