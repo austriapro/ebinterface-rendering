@@ -37,7 +37,7 @@
 
   <properties>
     <barcode4j-version>2.1</barcode4j-version>
-    <batik-bridge-version>1.15</batik-bridge-version>
+    <batik-bridge-version>1.17</batik-bridge-version>
     <gettext-commons-version>0.9.8</gettext-commons-version>
     <!-- Later versions don't work;
       net.sf.jasperreports.engine.design.JRValidationException: Report design not valid : 
