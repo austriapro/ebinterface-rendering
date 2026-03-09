@@ -43,7 +43,7 @@
       net.sf.jasperreports.engine.design.JRValidationException: Report design not valid : 
         1. Unknown reprint group 'ItemGroup' for element.
      -->
-    <jasperreports-version>6.5.1</jasperreports-version>
+    <jasperreports-version>7.0.4</jasperreports-version>
     <jasperreports-fonts-version>6.0.0</jasperreports-fonts-version>
     <pdfbox-version>1.8.17</pdfbox-version>
     <ph-commons-version>10.2.5</ph-commons-version>
